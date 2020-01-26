@@ -1,0 +1,152 @@
+* {
+  text-align: left;
+  color: rgb(58, 101, 128);
+}
+
+.infoBox {
+  margin: 80px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  .imageBox {
+    order: 1;
+    text-align: center;
+    width: 60%;
+    float: left;
+    margin-right: 50px;
+
+    img {
+      width: 100%;
+      margin: auto 10px;
+      overflow: hidden;
+    }
+  }
+
+  .info {
+    order: 2;
+    width: 40%;
+    float: right;
+    vertical-align: middle;
+
+    .text {
+      h1 {
+        font-family: "KeepCalm";
+        margin: 0;
+      }
+
+      h2 {
+        font-size: large;
+        padding: 0;
+        margin: 0;
+      }
+
+      p {
+        margin: 35px 0;
+      }
+    }
+
+    .actions {
+      width: 100%;
+      font-family: "KeepCalm";
+      font-weight: 900;
+      font-size: medium;
+      text-transform: uppercase;
+      display: flex;
+
+      .buy,
+      .price {
+        cursor: pointer;
+        height: auto;
+        min-height: 50px;
+        line-height: 50px;
+        text-align: center;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .buy {
+        margin-right: 20px;
+        background-color: white;
+        width: 350px;
+      }
+
+      .price {
+        color: white;
+        background-color: rgb(173, 52, 51);
+        width: 150px;
+      }
+    }
+
+    .checks {
+      margin-top: 30px;
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          position: relative;
+          margin: 10px 0px;
+
+          img {
+            width: 15px;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+.center {
+  padding: auto 0;
+}
+
+@media only screen and (max-width: 1000px) {
+  .infoBox {
+    display: block;
+    text-align: center;
+
+    .info,
+    .imageBox {
+      float: none;
+      width: 100%;
+      margin: 0;
+
+      h1,
+      h2 {
+        text-align: center;
+      }
+
+      p {
+        font-size: large;
+      }
+    }
+
+    .actions,
+    .checks {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: large;
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 700px) {
+  .infoBox {
+    .imageBox {
+      .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+

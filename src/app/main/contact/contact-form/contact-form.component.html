@@ -1,0 +1,29 @@
+<div class="contactformcontainer">
+    <div class="content">
+        <div class="heading">
+            <h1>Stel ons je vraag</h1>
+            <div class="line"></div>
+        </div>
+        <div class="contactform">
+            <form (ngSubmit)="processForm()" #contactForm="ngForm">
+                <div class="name" id="formGroup">
+                    <label for="name">Naam:</label>
+                    <input type="text" name="name" placeholder="Typ hier je naam" [(ngModel)]="name" required>
+                </div>
+                <div class="email" id="formGroup">
+                    <label for="email">E-mail:</label>
+                    <input type="email" name="email" placeholder="Typ hier je e-mail" [(ngModel)]="email" required
+                        email>
+                </div>
+                <div class="message" id="formGroup">
+                    <label for="message">Vraag of opmerking:</label>
+                    <textarea name="message" placeholder="Typ hier je vraag en/of opmerking" [(ngModel)]="message"
+                        required></textarea>
+                </div>
+                <div class="submitButton">
+                    <button type="submit" [disabled]="!contactForm.valid">Versturen</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

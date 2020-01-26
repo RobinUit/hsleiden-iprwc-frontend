@@ -1,0 +1,56 @@
+<header>
+    <div class="headerElements">
+
+        <div class="mobileNavigation">
+            <div class="pageBlur" *ngIf="mobileNavIsOpened" [@enterAnimation] (click)="toggleCheck()"></div>
+            <nav>
+                <div id="menuToggle">
+
+                    <input type="checkbox" [checked]="mobileNavIsOpened" (click)="toggleCheck()">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                    <ul id="menu">
+                        <li><a routerLink="/home" routerLinkActive="activePage" (click)="toggleCheck()">Home</a></li>
+                        <li><a routerLink="/webshop" routerLinkActive="activePage" (click)="toggleCheck()">Webshop</a></li>
+                        <li><a routerLink="/over" routerLinkActive="activePage" (click)="toggleCheck()">Over</a></li>
+                        <li><a routerLink="/contact" routerLinkActive="activePage" (click)="toggleCheck()">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="branding">
+            <div class="brandingdiv">
+                <a routerLink="/home">
+                    <img class="logo" src="assets/images/icons/LogoHeader.png" alt="Logo Back to the Roots">
+                </a>
+            </div>
+        </div>
+
+        <div class="desktopNavigation">
+            <nav>
+                <ul class="nav_links">
+                    <li><a routerLink="/home" routerLinkActive="activePage">Home</a></li>
+                    <li><a routerLink="/webshop" routerLinkActive="activePage">Webshop</a></li>
+                    <li><a routerLink="/over" routerLinkActive="activePage">Over</a></li>
+                    <li><a routerLink="/contact" routerLinkActive="activePage">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="actions">
+            <div class="actionsdiv">
+                <a class="account" routerLink="/login">
+                    <img src="assets/images/icons/Inloggen.png" alt="Account icoon">
+                </a>
+                <a class="shoppingcart" routerLink="/winkelwagen">
+                    <img src="assets/images/icons/ShoppingCart.png" alt="Winkelwagen icoon">
+                </a>
+            </div>
+        </div>
+
+    </div>
+</header>

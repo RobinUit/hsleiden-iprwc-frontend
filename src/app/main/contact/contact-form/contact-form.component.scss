@@ -1,0 +1,122 @@
+* {
+  color: rgb(58, 101, 128);
+}
+
+.contactformcontainer {
+  height: 100%;
+  margin: auto;
+  background-color: white;
+
+  .content {
+    .heading {
+      font-family: "KeepCalm";
+      margin-left: 75px;
+      padding-top: 30px;
+
+      h1 {
+        font-size: 20px;
+        margin-bottom: 30px;
+      }
+      .line {
+        width: auto;
+        margin-right: 0px;
+        height: 1.5px;
+        background-color: rgb(58, 101, 128);
+      }
+    }
+
+    .contactform {
+      margin: 20px 100px;
+
+      #formGroup {
+        margin: 30px 0px;
+      }
+
+      button {
+        cursor: pointer;
+        border: none;
+        background-color: rgb(92, 162, 82);
+        text-transform: uppercase;
+        color: white;
+        font-size: smaller;
+        font-weight: bold;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        width: 120px;
+        height: 30px;
+      }
+
+      button[disabled] {
+        cursor: not-allowed;
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #666666;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        outline: none;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        background: none;
+        border: none;
+        display: block;
+        box-sizing: border-box;
+      }
+
+      .name {
+        max-width: 80%;
+      }
+
+      input {
+        height: 50px;
+        padding: 5px 20px;
+      }
+
+      textarea {
+        min-height: 200px;
+        padding: 20px;
+        resize: none;
+      }
+    }
+  }
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(58, 101, 128, 0.6);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgba(58, 101, 128, 0.6);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgba(58, 101, 128, 0.6);
+}
+
+@media only screen and (max-width: 600px) {
+  .contactformcontainer {
+    .content {
+      .contactform {
+        margin: 20px 30px;
+
+        .name {
+          max-width: 100%;
+        }
+
+        #formGroup {
+          margin: 35px 0px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .submitButton {
+    text-align: center;
+  }
+}

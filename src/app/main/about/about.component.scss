@@ -1,0 +1,89 @@
+* { 
+    color: black;
+    text-align: left;
+}
+
+.gridBoxes {
+    width: 100%;
+}
+
+.left, .right {
+    margin: 50px 0px;
+}
+
+.left {
+    float: left;
+    width: 50%;
+}
+
+.right {
+    float: right;
+    width: 50%;
+}
+
+.box {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 50px auto;
+    padding: 30px 80px;
+    display: block;
+    height: 100%;
+    max-width: 80%;
+    text-align: left;
+    position: relative;
+
+    img {
+        width: 120px;
+        height: auto;
+        border-radius: 50%;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: -25px;
+        left: -60px;
+    }
+}
+
+h1 {
+    font-size: medium;
+    text-transform: uppercase;
+    margin: 0;
+    font-family: "KeepCalm";
+}
+
+h2 {
+    font-size: small;
+    margin-top: 5px;
+
+    i {
+        font-family: "GraphikItalicBold";
+    }
+}
+
+p {
+    font-size: 12px;
+    margin: 0;
+}
+
+@media only screen and (max-width: 1050px) {
+    .left, .right {
+        width: 100%;
+        float: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .box {
+        padding: 75px 25px 25px 25px;
+        margin: 100px auto;
+        width: 100%;
+
+        img {
+            left: 50%;
+            margin: 0 auto;
+            margin-left: -60px;
+            top: -60px;
+            display: block;
+        }
+    }
+}

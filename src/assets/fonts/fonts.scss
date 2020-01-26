@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'KeepCalmBold';
+    src: url('/assets/fonts/KeepCalm/KeepCalm-Medium.woff2') format('woff2'),
+        url('/assets/fonts/KeepCalm/KeepCalm-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KeepCalm';
+    src: url('/assets/fonts/KeepCalm/KeepCalm-Medium.woff2') format('woff2'),
+        url('/assets/fonts/KeepCalm/KeepCalm-Medium.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GraphikBold';
+    src: url('/assets/fonts/Graphik/Graphik-Bold.woff2') format('woff2'),
+        url('assets/fonts/Graphik/Graphik-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GraphikBlackItalic';
+    src: url('/assets/fonts/Graphik/Graphik-BlackItalic.woff2') format('woff2'),
+        url('/assets/fonts/Graphik/Graphik-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GraphikItalic';
+    src: url('/assets/fonts/Graphik/Graphik-RegularItalic.woff2') format('woff2'),
+        url('/assets/fonts/Graphik/Graphik-RegularItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: url('/assets/fonts/Graphik/Graphik-Regular.woff2') format('woff2'),
+        url('/assets/fonts/Graphik/Graphik-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+

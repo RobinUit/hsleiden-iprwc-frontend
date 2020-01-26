@@ -1,0 +1,34 @@
+<div class="ratings">
+    <div class="heading">
+        <h1>Wat onze lezers zeggen:</h1>
+    </div>
+    <div class="slideshow">
+        <div class="rating" id="rating" *carousel="let rating from ratings" (mouseenter)="focussed()"
+            (mouseleave)="unfocussed()" (press)="focussed()" (pressup)="unfocussed()" (pan)="checkIfFocussed()"
+            (swipeleft)="nextPage()" (swiperight)="previousPage()" [@fade]="nextSlide ? true : false">
+            <img src="assets/images/icons/Quote.png" alt="Quote icoon" class="quote">
+            <div class="text">
+                <p>
+                    {{rating.review}}
+                </p>
+                <p>- {{rating.author}}</p>
+            </div>
+            <img src="assets/images/icons/Rating{{rating.rating}}.png" alt="{{rating.rating}} sterren beoordeling"
+                class="ratingImage">
+            <div class="previous" (click)="previousPage()">
+                <img src="assets/images/icons/Previous.png" alt="Previous rating">
+            </div>
+            <div class="next" (click)="nextPage()" id="next">
+                <img src="assets/images/icons/Next.png" alt="Next rating">
+            </div>
+            <div class="progress">
+                <div class="bar" *ngIf="!isFocussed" [@progressBarAnimation]="isStarted ? true : false"></div>
+            </div>
+            <div class="pause" *ngIf="isFocussed" @enterAnimation>
+                <i class="material-icons">
+                    pause
+                </i>
+            </div>
+        </div>
+    </div>
+</div>
