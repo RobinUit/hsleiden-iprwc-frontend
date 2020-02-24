@@ -1,1 +1,21 @@
-<p>item-card works!</p>
+<div class="itemContainer" (click)="showProduct($event)">
+    <div class="itemImage">
+        <div class="imageBubble">
+            <div class="bubble" *ngIf="product.extraInfo1">
+                <p id="extraInfo1">{{product.extraInfo1}}</p>
+            </div>
+            <img src="assets/images/products/{{product.id}}/1.png" onerror="this.src='assets/images/products/noImage.jpg'"/> 
+        </div>
+    </div>
+    <div class="itemCard">
+        <div class="center">
+            <h1 id="productName">{{product.name}}</h1>
+            <h2 id="productPrice">€<span>{{euro}}</span>,{{cents}}</h2>
+            <p id="extraInfo2" *ngIf="product.extraInfo2"><i>{{product.extraInfo2}}</i></p>
+        </div>
+        <div class="itemButtonContainer">
+            <button id="addToCart" *ngIf="product.stock > 0" (click)="addProductToShoppingCart()">In Winkelwagen</button>
+            <button id="soldOut" *ngIf="product.stock <= 0">Uitverkocht</button>
+        </div>
+    </div>
+</div>

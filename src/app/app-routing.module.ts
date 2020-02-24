@@ -1,4 +1,4 @@
-import { ProductDetailsComponent } from './main/webshop/product-page/product-details/product-details.component';
+import { CheckoutComponent } from './main/webshop/checkout/checkout.component';
 import { ProductPageComponent } from './main/webshop/product-page/product-page.component';
 import { WebshopComponent } from './main/webshop/webshop.component';
 import { ContactComponent } from './main/contact/contact.component';
@@ -12,11 +12,13 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "over", component: AboutComponent },
   { path: "contact", component: ContactComponent },
-  { path: "test", component: ProductDetailsComponent },
   // { path: "account", component: AccountComponent },
-  // { path: "winkelwagen", component: ShoppingCartComponent },
+  { path: "winkelwagen", component: CheckoutComponent },
   {
-    path: "webshop", component: WebshopComponent, children: [
+    path: "webshop", children: [
+      {
+        path: "", pathMatch: "full", component: WebshopComponent
+      },
       {
         path: ":id", component: ProductPageComponent
       }
@@ -27,7 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'top'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

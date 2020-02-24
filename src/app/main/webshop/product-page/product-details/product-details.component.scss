@@ -1,9 +1,23 @@
+* {
+    color: rgb(58, 101, 128);
+    white-space: pre-line;
+}
+
 .box {
-    width: 50%;
+    width: 100%;
 
     mat-expansion-panel {
         text-align: left;
-        width: 90%;
+    }
+
+    mat-panel-title {
+        font-family: "GraphikBold";
+        font-size: 14px;
+        padding-left: 30px;
+    }
+
+    p {
+        font-family: "Graphik";
     }
     
 }

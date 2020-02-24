@@ -1,3 +1,5 @@
+import { ProductService } from 'src/app/shared/services/product.service';
+import { Product } from 'src/app/shared/models/product.model';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,13 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductPageComponent implements OnInit {
   index: number;
+  product: Product;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => this.index = params['id']);
-    console.log(this.index);
-    
+    this.product = this.productService.getProductByID(this.index);
   }
 
 }

@@ -1,0 +1,6 @@
+<div class="checkoutContainer">
+    <app-shopping-cart *ngIf="currentPage === 'shopping-cart'" [(order)]="order" [(items)]="items" (messageEvent)="changeCurrentPage($event)"></app-shopping-cart>
+    <app-delivery *ngIf="currentPage === 'delivery'" [(order)]="order" [(items)]="items" (messageEvent)="changeCurrentPage($event)"></app-delivery>
+    <app-summary *ngIf="currentPage === 'summary'" [(order)]="order" [(items)]="items" (messageEvent)="changeCurrentPage($event)"></app-summary>
+    <app-payment *ngIf="currentPage === 'payment'" [(order)]="order" [(items)]="items" (messageEvent)="changeCurrentPage($event)"></app-payment>
+</div>

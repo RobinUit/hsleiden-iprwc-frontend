@@ -1,8 +1,9 @@
-<app-product-details></app-product-details>
-<app-product-price></app-product-price>
-<app-product-image></app-product-image>
-
-<p>
-    product-page works!
-    {{index}}
-</p>
+<div class="productPageContainer">
+    <div class="left">
+        <app-product-image [product]="product"></app-product-image>
+    </div>
+    <div class="right">
+        <app-product-price [product]="product"></app-product-price>
+        <app-product-details [product]="product"></app-product-details>
+    </div>
+</div>

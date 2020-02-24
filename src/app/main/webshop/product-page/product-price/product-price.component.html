@@ -1,22 +1,39 @@
 <div class="box">
 
     <div class="header">
-        <h1>{{name}}</h1>
-        <h2>{{price}}</h2>
-        <h3>{{extraInfo1</h3>
-    </div>
-
-    <div class="stock">
-
+        <h1>{{product.name}}</h1>
+        <div class="inline">
+            <div class="left">
+                <h2 id="productPrice">€<span>{{euro}}</span>,{{cents}}</h2>
+                <p><i>{{product.extraInfo1}}</i></p>
+            </div>
+            <div class="right">
+                <button class="stock" type="button" disabled>
+                    {{stockText}}
+                </button>
+            </div>
+        </div>
     </div>
 
     <div class="benefits">
         <ul>
-            <li>{{benefit1}}</li>
-            <li>{{benefit2}}</li>
-            <li>{{benefit3}}</li>
+            <li *ngIf="product.benefit1"> 
+                <img src="assets/images/icons/Check.png" alt="">
+                {{product.benefit1}}
+            </li>
+            <li *ngIf="product.benefit2">
+                <img src="assets/images/icons/Check.png" alt="">
+                {{product.benefit2}}
+            </li>
+            <li *ngIf="product.benefit3">
+                <img src="assets/images/icons/Check.png" alt="">
+                {{product.benefit3}}
+            </li>
         </ul>
     </div>
 
-    <button (click)="inShoppingCart()">In winkelwagen</button>
+    <div class="itemButtonContainer">
+        <button id="addToCart" *ngIf="product.stock > 0" (click)="addProductToShoppingCart()">In Winkelwagen</button>
+        <button id="soldOut" *ngIf="product.stock <= 0">Uitverkocht</button>
+    </div>
 </div>

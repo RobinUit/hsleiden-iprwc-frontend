@@ -62,7 +62,7 @@ export class RatingsComponent implements OnInit {
     setTimeout(() => {
       this.resetInterval();
       this.controller.next();
-    }, 500)
+    }, 500) //change page when animation is halfway and at opacity 0
     this.isStarted = false;
   }
 
@@ -71,8 +71,39 @@ export class RatingsComponent implements OnInit {
     setTimeout(() => {
       this.resetInterval();
       this.controller.prev();
-    }, 500)
+    }, 500) //change page when animation is halfway and at opacity 0
     this.isStarted = false;
+  }
+
+  changePageAnimation() {
+    this.nextSlide = false;
+    setTimeout(() => {
+      this.nextSlide = true;
+    }, 1000) //timeout to allow boolean value change
+  }
+
+  startInterval() {
+    this.isStarted = true;
+    this.interval = setInterval(() => {
+      this.nextPage();
+    }, 10000); //time until automatic next page
+  }
+
+  stopInterval() {
+    clearInterval(this.interval);
+  }
+
+  resetInterval() {
+    this.stopInterval();
+    if (!this.isFocussed) {
+      this.startInterval();
+    }
+  }
+
+  checkIfFocussed() {
+    if (this.isFocussed) {
+      this.unfocussed();
+    }
   }
 
   focussed() {
@@ -85,39 +116,5 @@ export class RatingsComponent implements OnInit {
     this.isFocussed = false;
     document.getElementById("rating").style.transform = 'scale(1)';
     this.startInterval();
-  }
-
-  startInterval() {
-    setTimeout(() => {
-      this.isStarted = true;
-      this.interval = setInterval(() => {
-        this.nextPage();
-      }, 10000);
-    }, 0)
-  }
-
-  stopInterval() {
-    clearInterval(this.interval);
-  }
-
-  resetInterval() {
-    this.stopInterval();
-    if (!this.isFocussed) {
-      console.log("Test");
-      this.startInterval();
-    }
-  }
-
-  checkIfFocussed() {
-    if (this.isFocussed) {
-      this.unfocussed();
-    }
-  }
-
-  changePageAnimation() {
-    this.nextSlide = false;
-    setTimeout(() => {
-      this.nextSlide = true;
-    }, 1000)
   }
 }

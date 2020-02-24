@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { OrderService } from './../../../../shared/services/order.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { Product } from 'src/app/shared/models/product.model';
 
 @Component({
   selector: 'app-product-price',
@@ -7,20 +9,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductPriceComponent implements OnInit {
 
-  name: string = "Back to the Roots E-Book";
-  price: string = "€9,99";
-  extraInfo1: string = "Baguette";
-  benefit1: string = "Goedkoop";
-  benefit2: string = "Snel";
-  benefit3: string = "makkelijk"
+  euro: string;
+  cents: string;
+  stockText: string;
 
-  constructor() { }
+  @Input() product: Product;
+
+  constructor(private orderService: OrderService) { }
 
   ngOnInit() {
+    this.formatPriceValues();
+    this.formatStockText();
   }
 
-  inShoppingCart() {
-    console.log("test");
+  formatPriceValues() {
+    const values = this.product.price.split(",");
+    this.euro = values[0];
+    this.cents = values[1];
   }
 
+  formatStockText() {    
+    if(this.product.stock <= 0) {
+      this.stockText = "0 items beschikbaar";
+      return;
+    } else if (this.product.stock > 1 && this.product.stock < 25) {
+      this.stockText = "Nog slechts " + this.product.stock + " items beschikbaar"
+      return;
+    } else if (this.product.stock === 1) {
+      this.stockText = "Nog slechts " + this.product.stock + " item beschikbaar"
+      return;
+    }
+    this.stockText = "Op Voorraad";
+  }
+
+  addProductToShoppingCart() {
+    this.orderService.addProductToOrder(this.product);
+  }
 }

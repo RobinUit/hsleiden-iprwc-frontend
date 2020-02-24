@@ -1,0 +1,151 @@
+.shopping-cart {
+  .line {
+    width: auto;
+    height: 1.5px;
+    background-color: rgb(58, 101, 128);
+  }
+
+  .heading {
+    font-family: "KeepCalm";
+    text-align: left;
+
+    h1 {
+      font-size: 20px;
+      color: rgb(58, 101, 128);
+    }
+  }
+
+  .items {
+    margin: 20px 0;
+  }
+
+  .totalAmount {
+    margin-left: auto;
+    margin-right: 0;
+    margin-bottom: 50px;
+    width: 50%;
+    color: rgb(58, 101, 128);
+
+    p {
+      padding: 0;
+      margin: 0;
+    }
+
+    .totalPrice,
+    .totalItems {
+      display: flex;
+      width: 100%;
+      margin: 5px 0;
+
+      .left {
+        width: 80%;
+        text-align: left;
+
+        span {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: normal;
+        }
+      }
+
+      .right {
+        width: 20%;
+        text-align: right;
+      }
+    }
+
+    .totalPrice {
+      p {
+        font-family: "GraphikBold";
+      }
+    }
+
+    .totalItems {
+      p {
+        font-family: "Graphik";
+      }
+    }
+  }
+
+  .actions {
+    text-align: right;
+    button {
+      line-height: 35px;
+      cursor: pointer;
+      border: none;
+      background-color: rgb(92, 162, 82);
+      text-transform: uppercase;
+      color: white;
+      font-family: "KeepCalm";
+      font-size: 10px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      height: 35px;
+      padding: 0 30px;
+    }
+
+    button[disabled] {
+      cursor: not-allowed;
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #867f7f;
+    }
+  }
+
+  .empty {
+    color: rgb(58, 101, 128);
+    h1 {
+      font-family: "GraphikBold";
+      font-size: 28px;
+    }
+
+    h2 {
+      font-family: "Graphik";
+      font-size: 20px;
+    }
+
+    button {
+      line-height: 50px;
+      cursor: pointer;
+      border: none;
+      background-color: rgb(92, 162, 82);
+      text-transform: uppercase;
+      color: white;
+      font-family: "KeepCalm";
+      font-size: 16px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      height: 50px;
+      padding: 0 30px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .shopping-cart {
+    .totalAmount {
+      width: 60%;
+    }
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .shopping-cart {
+    .totalAmount {
+      width: 70%;
+      margin-right: auto;
+      font-size: 13px;
+    }
+    .actions {
+      text-align: center;
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .shopping-cart {
+    .totalAmount {
+      width: 100%;
+    }
+  }
+}

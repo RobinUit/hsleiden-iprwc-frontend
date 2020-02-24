@@ -1,26 +1,28 @@
 <div class="box">
-    <mat-expansion-panel [togglePosition]="'before'">
+    <mat-accordion>
+        <mat-expansion-panel [togglePosition]="'before'">
 
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Productinformatie
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-    
-        <p>
-            {{productInformation}}
-        </p>
-    
-    </mat-expansion-panel>
-    
-    <mat-expansion-panel [togglePosition]="'before'">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Alle productspecificaties
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p>
-            {{productSpecifications}}
-        </p>
-    </mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Productinformatie
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <p>
+                {{product.description}}
+            </p>
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [togglePosition]="'before'">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Alle productspecificaties
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>
+                {{product.specifications}}
+            </p>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>

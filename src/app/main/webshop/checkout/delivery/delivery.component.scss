@@ -1,0 +1,184 @@
+.delivery {
+  .heading {
+    font-family: "KeepCalm";
+    text-align: left;
+
+    h1 {
+      font-size: 20px;
+      color: rgb(58, 101, 128);
+    }
+
+    .line {
+      width: auto;
+      margin-right: 0px;
+      height: 1.5px;
+      background-color: rgb(58, 101, 128);
+    }
+  }
+
+  .deliveryForm {
+    color: rgb(58, 101, 128);
+    text-align: left;
+    #formGroup {
+      margin: 15px 5% 15px 0;
+    }
+    #formGroup.country {
+      margin: 15px 0;
+    }
+
+    .row1,
+    .row2,
+    .row3,
+    .row4 {
+      width: 100%;
+      div {
+        width: 100%;
+        display: inline-block;
+      }
+    }
+
+    .row1,
+    .row2,
+    .row4 {
+      div {
+        width: 30%;
+      }
+
+      .country {
+        margin: 15px 0;
+      }
+    }
+
+    .row3 {
+      .zipcode {
+        width: 30%;
+      }
+      .housenumber {
+        width: 15%;
+      }
+    }
+
+    .message {
+      width: 100%;
+    }
+
+    .actions {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        line-height: 35px;
+        cursor: pointer;
+        border: none;
+        background-color: rgb(92, 162, 82);
+        text-transform: uppercase;
+        color: white;
+        font-family: "KeepCalm";
+        font-size: 10px;
+        font-weight: bold;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        height: 35px;
+        padding: 0 30px;
+      }
+
+      button[disabled] {
+        cursor: not-allowed;
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #867f7f;
+      }
+    }
+
+    input,
+    textarea {
+      outline: none;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      background: none;
+      border: none;
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    input[disabled] {
+      background-color: #cccccc;
+    }
+
+    input {
+      height: 50px;
+      padding: 5px 20px;
+    }
+
+    textarea {
+      min-height: 100px;
+      padding: 20px;
+      resize: none;
+    }
+  }
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(58, 101, 128, 0.6);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgba(58, 101, 128, 0.6);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgba(58, 101, 128, 0.6);
+}
+
+@media only screen and (max-width: 900px) {
+  .delivery {
+    .deliveryForm {
+      .row1,
+      .row2,
+      .row3,
+      .row4,
+      input,
+      textarea {
+        width: 100%;
+        div,
+        .zipcode,
+        .phonenumber,
+        .housenumber {
+          width: 100%;
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .delivery {
+    .deliveryForm {
+      .actions {
+        display: flex;
+        text-align: center;
+        flex-direction: column-reverse;
+        margin-bottom: 0;
+        #back,
+        #submit {
+          margin: 0 auto;
+          float: none;
+        }
+
+        #back {
+          order: -1;
+          margin-top: 20px;
+        }
+
+        #submit {
+          order: 1;
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,12 @@
+import { HttpErrorInterceptor } from './shared/interceptors/http-error.interceptor';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HammerJSConfig } from './shared/HammerJSConfig';
 import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +28,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BackToTopComponent } from './shared/back-to-top/back-to-top.component';
 import { RatingsComponent } from './main/home/ratings/ratings.component';
 import { CarouselDirective } from './shared/directives/carousel.directive';
+import { CheckoutComponent } from './main/webshop/checkout/checkout.component';
+import { ShoppingCartComponent } from './main/webshop/checkout/shopping-cart/shopping-cart.component';
+import { DeliveryComponent } from './main/webshop/checkout/delivery/delivery.component';
+import { PaymentComponent } from './main/webshop/checkout/payment/payment.component';
+import { SummaryComponent } from './main/webshop/checkout/summary/summary.component';
+import { ItemComponent } from './main/webshop/checkout/shopping-cart/item/item.component';
+import { ItemSummaryComponent } from './main/webshop/checkout/summary/item-summary/item-summary.component';
 
 @NgModule({
   declarations: [
@@ -45,22 +55,37 @@ import { CarouselDirective } from './shared/directives/carousel.directive';
     ProductPriceComponent,
     BackToTopComponent,
     RatingsComponent,
-    CarouselDirective
+    CarouselDirective,
+    CheckoutComponent,
+    ShoppingCartComponent,
+    DeliveryComponent,
+    PaymentComponent,
+    SummaryComponent,
+    ItemComponent,
+    ItemSummaryComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     MatIconModule,
     MatExpansionModule,
-   ],
+    ToastrModule.forRoot()
+  ],
   providers: [
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: HammerJSConfig
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -1,0 +1,36 @@
+<div class="shopping-cart">
+
+    <div class="heading">
+        <h1>Winkelwagentje</h1>
+        <div class="line"></div>
+    </div>
+
+    <div *ngIf="itemAmount >= 1" class="filled">
+        <div class="items">
+            <div *ngFor="let item of items" class="items">
+                <app-item [item]="item" (messageEvent)="updateTotalAmount(item)"></app-item>
+            </div>
+        </div>
+        <div class="totalAmount">
+            <div class="totalItems">
+                <p class="left">Aantal producten ({{itemAmount}})</p>
+                <p class="right">€ {{price | number : '1.2-2'}}</p>
+            </div>
+            <div class="line"></div>
+            <div class="totalPrice">
+                <p class="left">Totaal (inclusief verzendkosten € {{ shippingCost | number : '1.2-2' }})</p>
+                <p class="right">€ {{price + shippingCost | number : '1.2-2'}}</p>
+            </div>
+        </div>
+        <div class="actions">
+            <button type="submit" id="submit" (click)="changePage('delivery')">Door naar bestellen >></button>
+        </div>
+    </div>
+
+    <div *ngIf="itemAmount <= 0" class="empty">
+        <h1>Je winkelwagen is leeg!</h1>
+        <!-- Leeg winkelwagen plaatje of iets dergelijks -->
+        <h2>Ga naar de webshop om iets toe te voegen</h2>
+        <button type="button" id="webshop" (click)="navigate()">Webshop</button>
+    </div>
+</div>

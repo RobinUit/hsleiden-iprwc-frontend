@@ -13,11 +13,13 @@
                     te lezen. Doormiddel van QR-codes te scannen luister je gemakkeljk naar de bijbehorende muziek.
                 </p>
             </div>
-            <div class="actions">
-                <div class="buy" (click)="buyEbook()">
+            <div class="actions" (click)="buyEbook()">
+                <div class="buy">
                     Koop nu het E-book!
                 </div>
-                <div class="price" (click)="buyEbook()">€7,99</div>
+                <div class="price">
+                    {{product.price}}
+                </div>
             </div>
             <div class="checks">
                 <ul>

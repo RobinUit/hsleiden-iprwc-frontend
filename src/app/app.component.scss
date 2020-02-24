@@ -1,0 +1,19 @@
+::ng-deep .error {
+    background: rgb(170, 64, 50);
+    color: white;
+}
+
+::ng-deep .success {
+    background: rgb(85, 172, 104);
+    color: white;
+}
+
+::ng-deep .warning {
+    background: rgb(216, 132, 59);
+    color: white;
+}
+
+::ng-deep .notification {
+    background: rgb(81, 150, 213);
+    color: white;
+}
