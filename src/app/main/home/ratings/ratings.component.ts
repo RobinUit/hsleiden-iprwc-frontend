@@ -13,7 +13,7 @@ import { Animations } from 'src/app/app.animations';
   ]
 })
 export class RatingsComponent implements OnInit {
-  @ViewChild(CarouselDirective, { static: false }) controller;
+  @ViewChild(CarouselDirective) controller;
 
   ratings = [
     {
