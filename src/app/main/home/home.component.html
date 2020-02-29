@@ -17,8 +17,8 @@
                 <div class="buy">
                     Koop nu het E-book!
                 </div>
-                <div class="price">
-                    {{product.price}}
+                <div class="price" *ngIf="productsLoaded | async">
+                    {{product.price | currency:'EUR':'symbol':'':'nl'}}
                 </div>
             </div>
             <div class="checks">

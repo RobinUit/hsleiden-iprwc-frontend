@@ -6,20 +6,20 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class ApiService {
 
+  private apiURL: string = "http://h2871695.stratoserver.net:8085";
+  private localApiURL: string = "http://localhost:8085";
+
   constructor(private http: HttpClient) {}
 
   public get<Any>(uri: string, params: HttpParams) {
-    // const header = AuthorizationService.header;
-    return this.http.get<Any>(uri, { params });
+    return this.http.get<Any>(this.localApiURL + uri, { params });
   }
 
-  // public post<Any>(uri: string, data: Object) {
-  //   // const header = AuthorizationService.header;
-  //   return this.http.post(uri, data, {headers: header});
-  // }
+  public post<Any>(uri: string, data: Object) {
+    return this.http.post(this.localApiURL + uri, data);
+  }
 
-  // public delete<Any>(uri: string, data: Object){
-  //   // const header = AuthorizationService.header;
-  //   return this.http.delete(uri, data);
-  // }
+  public delete<Any>(uri: string, data: Object){
+    return this.http.delete(this.localApiURL + uri, data);
+  }
 }

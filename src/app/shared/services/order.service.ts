@@ -1,3 +1,5 @@
+import { ApiService } from './api.service';
+import { AlertService } from './alert.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { Item } from './../models/item.model';
 import { Product } from 'src/app/shared/models/product.model';
@@ -10,6 +12,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class OrderService {
 
+  private classURL: string = "/order";
   private product: Product
   private item: Item;
   private items: Item[] = [];
@@ -17,7 +20,9 @@ export class OrderService {
   private valueFound: boolean;
 
   constructor(
-    private productService: ProductService) {
+    private productService: ProductService,
+    private alert: AlertService,
+    private api: ApiService) {
   }
 
   getOrder(): Observable<Order> {
@@ -48,9 +53,10 @@ export class OrderService {
       this.clearVariables();
       this.order.value.items = this.items;
       this.setOrder(this.order.value);
-      // this.alert.openSnackBar("success", "Het product is toegevoegd aan je winkelmandje!")
+      this.alert.showAlert("success", "Het product is toegevoegd aan je winkelmandje");
+      return;
     };
-    // this.alert.openSnackBar("error", "Het product is niet toegevoegd aan je winkelmandje")
+    this.alert.showAlert("failed", "Het product is niet toegevoegd aan je winkelmandje");
   }
 
   public removeItemFromOrder(item: Item) {
@@ -58,10 +64,13 @@ export class OrderService {
     this.removeItem(this.item);
     this.order.value.items = this.items;
     this.setOrder(this.order.value);
+    this.alert.showAlert("success", "Het product is verwijderd uit je winkelmandje");
   }
 
   private checkIfProductInStock() {
-    if (this.productService.getProductByID(this.product.id).stock > 0) {
+    if (this.productService.getProductByID(this.product.id).subscribe((product: Product) => {
+      product.stock > 0
+    })) {
       return true;
     }
     return false;
@@ -70,8 +79,6 @@ export class OrderService {
   private addProduct() {
     if (this.itemsArrayIsNotEmpty()) {
       this.items.forEach((item: Item) => {
-        console.log(item);
-
         this.item = item;
         if (this.item.product.id === this.product.id) {
           this.removeItem(this.item);
@@ -103,5 +110,16 @@ export class OrderService {
     this.product = null;
     this.item = null;
     this.valueFound = false;
+  }
+
+  public validateOrderAndInitiatePayment(order: Order) {
+    return this.api.post<Order>(this.classURL + "/pay", order).subscribe(
+      () => {
+        console.log("order received"); 
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

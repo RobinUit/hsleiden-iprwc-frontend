@@ -17,14 +17,14 @@
             <div class="content">
                 <div class="priceField">
                     <label for="amount">Prijs:</label>
-                    <p>€ {{item.product.price}}</p>
+                    <p>{{item.product.price | currency:'EUR':'symbol':'':'nl'}}</p>
                 </div>
                 <div class="amountField">
                     <label for="amount">Aantal:</label>
                     <input type="number" min="1" name="amount" (change)="updateAmount()" value="item.amount" [(ngModel)]="amount"
                         onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
                 </div>
-                <h1>€ {{totalPrice | number : '1.2-2'}}</h1>
+                <h1>{{totalPrice | currency:'EUR':'symbol':'':'nl'}}</h1>
             </div>
         </div>
 

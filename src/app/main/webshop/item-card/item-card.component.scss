@@ -43,7 +43,6 @@
 
 .itemCard {
   z-index: 0;
-  min-height: 250px;
   height: auto;
   padding-bottom: 30px;
   width: 100%;
@@ -89,6 +88,7 @@
     width: 100%;
     #addToCart,
     #soldOut {
+      cursor: pointer;
       border: none;
       font-family: "KeepCalm";
       margin: 0 auto;

@@ -1,4 +1,4 @@
-<div class="productPageContainer">
+<div class="productPageContainer" *ngIf="productsLoaded | async">
     <div class="left">
         <app-product-image [product]="product"></app-product-image>
     </div>

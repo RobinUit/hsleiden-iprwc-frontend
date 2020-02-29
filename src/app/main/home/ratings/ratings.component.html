@@ -21,13 +21,15 @@
             <div class="next" (click)="nextPage()" id="next">
                 <img src="assets/images/icons/Next.png" alt="Next rating">
             </div>
-            <div class="progress">
-                <div class="bar" *ngIf="!isFocussed" [@progressBarAnimation]="isStarted ? true : false"></div>
-            </div>
-            <div class="pause" *ngIf="isFocussed" @enterAnimation>
-                <i class="material-icons">
-                    pause
-                </i>
+            <div class="progressbar">
+                <div class="progress">
+                    <div class="bar" *ngIf="!isFocussed" [@progressBarAnimation]="isStarted ? true : false"></div>
+                </div>
+                <div class="pause" *ngIf="isFocussed" @enterAnimation>
+                    <i class="material-icons">
+                        pause
+                    </i>
+                </div>
             </div>
         </div>
     </div>

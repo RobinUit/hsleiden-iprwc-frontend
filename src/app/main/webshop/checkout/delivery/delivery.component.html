@@ -36,7 +36,7 @@
                     <div class="zipcode" id="formGroup">
                         <label for="zipcode">Postcode:</label>
                         <input type="text" name="zipcode" placeholder="Postcode" autocomplete="postal-code"
-                            (focusout)="getFullAddress()" formControlName="zipcode" required>
+                            (focusout)="getFullAddress()" oninput="this.value = this.value.toUpperCase()" formControlName="zipcode" required>
                     </div>
                     <div class="housenumber" id="formGroup">
                         <label for="housenumber">Huisnummer:</label>

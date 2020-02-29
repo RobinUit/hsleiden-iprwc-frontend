@@ -16,7 +16,7 @@ export class AddressService {
       .set("zipcode", zipcode)
       .set("housenumber", housenumber)
        
-    return this.apiService.get<Address>('http://localhost:8080/address', params).pipe(
+    return this.apiService.get<Address>('/address', params).pipe(
       map((address: Address) => {
       return address;
     }));

@@ -10,8 +10,8 @@ import { Product } from 'src/app/shared/models/product.model';
 })
 export class ItemCardComponent implements OnInit {
 
-  private euro: string;
-  private cents: string;
+  public euro: string;
+  public cents: string;
 
   @Input() product: Product;
 
@@ -19,8 +19,8 @@ export class ItemCardComponent implements OnInit {
     private router: Router,
     private orderService: OrderService) { }
 
-  ngOnInit() {
-    const values = this.product.price.split(",");
+  ngOnInit() {    
+    const values = this.product.price.toFixed(2).toString().split(".");
     this.euro = values[0];
     this.cents = values[1];
   }

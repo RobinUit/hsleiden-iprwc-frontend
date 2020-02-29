@@ -1,3 +1,4 @@
+import { AlertService } from './../../../../shared/services/alert.service';
 import { Subscription } from 'rxjs';
 import { OrderService } from './../../../../shared/services/order.service';
 import { AddressService } from './../../../../shared/services/address.service';
@@ -25,9 +26,10 @@ export class DeliveryComponent implements OnInit, OnDestroy {
   form: FormGroup;
 
   constructor(
-    private parent: CheckoutComponent, 
-    private addressService: AddressService, 
-    private orderService: OrderService) { }
+    private parent: CheckoutComponent,
+    private addressService: AddressService,
+    private orderService: OrderService,
+    private alert: AlertService) { }
 
   ngOnInit() {
     this.buildForm();
@@ -64,23 +66,23 @@ export class DeliveryComponent implements OnInit, OnDestroy {
 
     if (zipcode == null || zipcode == "" ||
       housenumber == null || housenumber == "") {
-        this.form.get('address').patchValue({
-          street: "",
-          city: "",
-          country: ""
-        })
-        this.disableForm();
+      this.resetValues();
+      this.disableForm();
       return;
     }
-
-    this.enableForm();
 
     this.subscription = this.addressService.getAddress(zipcode, housenumber).subscribe((address: Address) => {
       this.form.get('address').patchValue({
         street: address.street,
         city: address.city,
-        country: "Nederland"
+        country: "Nederland",
       })
+      this.enableForm();
+      this.alert.showAlert("success", "Adres is gevonden en automatisch aangevuld");
+    }, () => {
+      this.resetValues();
+      this.enableForm();
+      this.alert.showAlert("warning", "Er is geen adres gevonden bij de opgegven gegevens");
     })
   }
 
@@ -139,6 +141,14 @@ export class DeliveryComponent implements OnInit, OnDestroy {
     this.form.get('address.city').enable()
     this.form.get('address.street').enable()
     this.form.get('address.country').enable()
+  }
+
+  resetValues() {
+    this.form.get('address').patchValue({
+      street: "",
+      city: "",
+      country: ""
+    })
   }
 
   ngOnDestroy() {

@@ -102,6 +102,7 @@
     width: 100%;
     #addToCart,
     #soldOut {
+      cursor: pointer;
       border: none;
       font-family: "KeepCalm";
       margin: 0 auto;
@@ -143,6 +144,7 @@
           float: none;
           flex: unset;
           max-width: 100%;
+          margin: 5px 0;
         }
 
         button {

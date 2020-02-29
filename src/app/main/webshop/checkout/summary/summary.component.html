@@ -29,9 +29,9 @@
                     <span *ngIf="totalItems == 1">item</span>
                     om af te rekenen
                 </p>
-                <p>Totaal: €{{order.totalAmount | number : '1.2-2'}}</p>
-                <p>Verzendkosten: €{{order.shippingCosts | number : '1.2-2'}}</p>
-                <p>Subtotaal: €{{subTotal | number : '1.2-2'}} </p>
+                <p>Totaal: {{order.totalAmount | currency:'EUR':'symbol':'':'nl'}}</p>
+                <p>Verzendkosten: {{order.shippingCosts | currency:'EUR':'symbol':'':'nl'}}</p>
+                <p>Subtotaal: {{subTotal | currency:'EUR':'symbol':'':'nl'}} </p>
             </div>
         </div>
     </div>
@@ -48,6 +48,6 @@
     </div>
     <div class="actions">
         <button type="button" id="back" (click)="changePage('delivery')">&lt;&lt; Terug</button>
-        <button type="submit" id="submit" (click)="changePage('payment')">Door naar betalen >></button>
+        <button type="submit" id="submit" (click)="validateAndPayOrder()">Door naar betalen >></button>
     </div>
 </div>

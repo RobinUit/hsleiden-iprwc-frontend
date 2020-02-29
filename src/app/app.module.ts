@@ -1,3 +1,8 @@
+import { AuthTokenHttpInterceptor } from './shared/interceptors/http-auth-token.interceptor';
+import { environment } from '../environments/environment';
+
+import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular';
+import { AuthGuard } from './shared/guards/auth.guard';
 import { HttpErrorInterceptor } from './shared/interceptors/http-error.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -7,6 +12,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { ToastrModule } from 'ngx-toastr';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +42,22 @@ import { PaymentComponent } from './main/webshop/checkout/payment/payment.compon
 import { SummaryComponent } from './main/webshop/checkout/summary/summary.component';
 import { ItemComponent } from './main/webshop/checkout/shopping-cart/item/item.component';
 import { ItemSummaryComponent } from './main/webshop/checkout/summary/item-summary/item-summary.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AccountComponent } from './main/account/account.component';
+
+const firebaseUiAuthConfig = {
+  signInFlow: 'popup',
+  signInOptions: [
+    {
+      provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      customParameters: {
+        prompt: 'select_account'
+      }
+    },
+    firebase.auth.EmailAuthProvider.PROVIDER_ID
+  ],
+  credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO,
+};
 
 @NgModule({
   declarations: [
@@ -62,9 +85,14 @@ import { ItemSummaryComponent } from './main/webshop/checkout/summary/item-summa
     PaymentComponent,
     SummaryComponent,
     ItemComponent,
-    ItemSummaryComponent
+    ItemSummaryComponent,
+    LoadingSpinnerComponent,
+    AccountComponent,
   ],
   imports: [
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -73,17 +101,31 @@ import { ItemSummaryComponent } from './main/webshop/checkout/summary/item-summa
     HttpClientModule,
     MatIconModule,
     MatExpansionModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-full-width',
+      preventDuplicates: true,
+      maxOpened: 3,
+      resetTimeoutOnDuplicate: true,
+      timeOut: 4000
+    })
   ],
   providers: [
     {
-      provide: HAMMER_GESTURE_CONFIG,
-      useClass: HammerJSConfig
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthTokenHttpInterceptor,
+      multi: true
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
       multi: true
+    },
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: HammerJSConfig
+    },
+    {
+      provide: AuthGuard
     }
   ],
   bootstrap: [AppComponent],

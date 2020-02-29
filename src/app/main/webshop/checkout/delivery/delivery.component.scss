@@ -19,6 +19,14 @@
   .deliveryForm {
     color: rgb(58, 101, 128);
     text-align: left;
+
+    label {
+      display: inline-block;
+      max-width: 100%;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
     #formGroup {
       margin: 15px 5% 15px 0;
     }
@@ -92,6 +100,8 @@
 
     input,
     textarea {
+      color: rgb(58, 101, 128);
+      font-size: 14px;
       outline: none;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       background: none;
@@ -137,6 +147,9 @@
 @media only screen and (max-width: 900px) {
   .delivery {
     .deliveryForm {
+      #formGroup {
+        margin: 35px 0;
+      }
       .row1,
       .row2,
       .row3,

@@ -4,6 +4,9 @@ import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectionStrategy
 import { Order } from 'src/app/shared/models/order.model';
 import { Item } from 'src/app/shared/models/item.model';
 import { CheckoutComponent } from '../checkout.component';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/nl';
+registerLocaleData(localeFr, 'nl');
 
 @Component({
   selector: 'app-shopping-cart',
@@ -65,7 +68,7 @@ export class ShoppingCartComponent implements OnInit {
     if(this.order.items) {
       this.order.items.forEach((item: Item) => {        
         this.itemAmount = this.itemAmount + item.amount;
-        this.price = this.price + (item.amount * +item.product.price.replace(",", "."));
+        this.price = this.price + (item.amount * +item.product.price.toFixed(2));
 
         if(item.product.digital) {
           this.digitalItems = this.digitalItems + item.amount;

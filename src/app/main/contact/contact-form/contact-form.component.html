@@ -5,7 +5,7 @@
             <div class="line"></div>
         </div>
         <div class="contactform">
-            <form (ngSubmit)="processForm()" #contactForm="ngForm">
+            <form (ngSubmit)="createMail()" #contactForm="ngForm">
                 <div class="name" id="formGroup">
                     <label for="name">Naam:</label>
                     <input type="text" name="name" placeholder="Typ hier je naam" [(ngModel)]="name" required>

@@ -1,3 +1,4 @@
+import { ProductService } from 'src/app/shared/services/product.service';
 import { OrderService } from './shared/services/order.service';
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
@@ -14,7 +15,7 @@ export class AppComponent {
 
   location: Location;
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private productService: ProductService) { }
 
   ngOnInit() {
     this.automaticRouteToHTTPS()

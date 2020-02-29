@@ -6,13 +6,11 @@ import { Injectable } from '@angular/core';
 })
 export class AlertService {
   message: string;
-  title: string;
 
   constructor(private alert: ToastrService) { }
 
-  public showAlert(type: string, message: string, title?: string) {
+  public showAlert(type: string, message: string) {
     this.message = message;
-    this.title = title;
 
     switch(type) {
       case "success":
@@ -30,18 +28,21 @@ export class AlertService {
   }
 
   private showSuccess() {
-    this.alert.success(this.message, this.title)
+    this.alert.success(this.message, "Gelukt!")
   }
 
   private showFailed() {
-    this.alert.error(this.message, this.title)
+    this.alert.error(this.message, "Er is iets fout gegaan!", {
+      disableTimeOut: true,
+      closeButton: true
+    })
   }
 
   private showWarning() {
-    this.alert.warning(this.message, this.title)
+    this.alert.warning(this.message, "Let op!")
   } 
 
   private showInformation() {
-    this.alert.info(this.message, this.title)
+    this.alert.info(this.message, "Info")
   }
 }

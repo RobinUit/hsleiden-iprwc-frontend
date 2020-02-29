@@ -41,7 +41,7 @@ export class ItemComponent implements OnInit {
   }
 
   setTotalPrice() {
-    let totalPriceNumber = +this.item.product.price.replace(",", ".") * this.item.amount
-    this.totalPrice = totalPriceNumber.toString();
+    let totalPriceNumber = +this.item.product.price.toFixed(2) * this.item.amount
+    this.totalPrice = totalPriceNumber.toFixed(2).toString();
   }
 }

@@ -18,7 +18,10 @@
         </div>
     </div>
 
-    <div class="products">
+    <div class="loading" *ngIf="isLoading">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div class="products" *ngIf="!isLoading">
         <div *ngFor="let product of products" class="items">
             <app-item-card [product]="product"></app-item-card>
         </div>

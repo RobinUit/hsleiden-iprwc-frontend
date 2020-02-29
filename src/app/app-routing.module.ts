@@ -1,3 +1,5 @@
+import { AuthGuard } from './shared/guards/auth.guard';
+import { AccountComponent } from './main/account/account.component';
 import { CheckoutComponent } from './main/webshop/checkout/checkout.component';
 import { ProductPageComponent } from './main/webshop/product-page/product-page.component';
 import { WebshopComponent } from './main/webshop/webshop.component';
@@ -12,8 +14,8 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "over", component: AboutComponent },
   { path: "contact", component: ContactComponent },
-  // { path: "account", component: AccountComponent },
-  { path: "winkelwagen", component: CheckoutComponent },
+  { path: "account", component: AccountComponent },
+  { path: "winkelwagen", component: CheckoutComponent, canActivate: [AuthGuard] },
   {
     path: "webshop", children: [
       {

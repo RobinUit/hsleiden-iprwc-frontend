@@ -8,18 +8,18 @@
     <div *ngIf="itemAmount >= 1" class="filled">
         <div class="items">
             <div *ngFor="let item of items" class="items">
-                <app-item [item]="item" (messageEvent)="updateTotalAmount(item)"></app-item>
+                <app-item [item]="item" (messageEvent)="updateTotalAmount()"></app-item>
             </div>
         </div>
         <div class="totalAmount">
             <div class="totalItems">
                 <p class="left">Aantal producten ({{itemAmount}})</p>
-                <p class="right">€ {{price | number : '1.2-2'}}</p>
+                <p class="right">{{price | currency:'EUR':'symbol':'':'nl'}}</p>
             </div>
             <div class="line"></div>
             <div class="totalPrice">
-                <p class="left">Totaal (inclusief verzendkosten € {{ shippingCost | number : '1.2-2' }})</p>
-                <p class="right">€ {{price + shippingCost | number : '1.2-2'}}</p>
+                <p class="left">Totaal (inclusief verzendkosten {{ shippingCost | currency:'EUR':'symbol':'':'nl'}})</p>
+                <p class="right">{{price + shippingCost | currency:'EUR':'symbol':'':'nl'}}</p>
             </div>
         </div>
         <div class="actions">

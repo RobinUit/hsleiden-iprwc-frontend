@@ -1,3 +1,7 @@
+import { Product } from 'src/app/shared/models/product.model';
+import { ProductService } from 'src/app/shared/services/product.service';
+import { OrderService } from './../../../../shared/services/order.service';
+import { ApiService } from './../../../../shared/services/api.service';
 import { CheckoutComponent } from './../checkout.component';
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { Order } from 'src/app/shared/models/order.model';
@@ -17,7 +21,7 @@ export class SummaryComponent implements OnInit, OnChanges {
   totalItems: number = 0;
   subTotal: number;
 
-  constructor(private parent: CheckoutComponent) { }
+  constructor(private parent: CheckoutComponent, private orderService: OrderService, private p: ProductService) { }
 
   ngOnInit() {
     this.getTotalAmountOfItems();
@@ -40,4 +44,7 @@ export class SummaryComponent implements OnInit, OnChanges {
     this.messageEvent.emit(page);
   }
 
+  validateAndPayOrder() {
+    this.orderService.validateOrderAndInitiatePayment(this.order);
+  }
 }
