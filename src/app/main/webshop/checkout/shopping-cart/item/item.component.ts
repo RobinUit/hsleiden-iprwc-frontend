@@ -19,8 +19,10 @@ export class ItemComponent implements OnInit {
   constructor(private orderService: OrderService, private shoppingCart: ShoppingCartComponent) { }
 
   ngOnInit() {
-    this.setTotalPrice();
     this.amount = this.item.amount;
+    setTimeout(() => {
+      this.updateAmount();
+    }, 0)
   }
 
   updateAmount() {

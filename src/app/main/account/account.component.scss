@@ -1,47 +1,39 @@
-.loginscreen {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    height: auto;
-    width: 400px;
-    background-color: white;
-    margin: 80px auto;
-    padding: 40px 0;
+.account {
+  width: 100%;
+  margin: 80px 0;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 0;
+  display: flex;
+  width: 100%;
+  min-height: 350px;
+  position: relative;
 
-    .heading {
-        margin: 20px;
-        h1, h2 {
-            margin: 0;
-            padding: 0;
-            font-family: "KeepCalm";
-            color: rgb(58, 101, 128);
-        }
+  app-navigation {
+    float: left;
+    margin: 0;
+    padding: 0;
+    // position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
 
-        h1 {
-            font-size: 24px;
-        }
+  .content {
+    margin: 0 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        h2 {
-            font-size: 20px;
-        }
+    ::ng-deep app-settings, ::ng-deep app-orders, ::ng-deep app-admin {
+      width: 100%;
     }
-
-    img {
-        width: 150px;
-        height: auto;
-    }
-
-    p {
-        margin: 40px 40px 0 40px;
-        font-size: 14px;
-        a {
-            text-decoration: none;
-            font-weight: bolder;
-            color: rgb(58, 101, 128);
-        }
-    }
+  }
 }
 
 @media only screen and (max-width: 600px) {
-    .loginscreen {
-        width: 90%;
-    }
+  .loginscreen {
+    width: 90%;
+  }
 }

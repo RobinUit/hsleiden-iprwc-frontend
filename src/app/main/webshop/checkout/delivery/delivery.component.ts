@@ -78,11 +78,10 @@ export class DeliveryComponent implements OnInit, OnDestroy {
         country: "Nederland",
       })
       this.enableForm();
-      this.alert.showAlert("success", "Adres is gevonden en automatisch aangevuld");
     }, () => {
       this.resetValues();
       this.enableForm();
-      this.alert.showAlert("warning", "Er is geen adres gevonden bij de opgegven gegevens");
+      this.alert.showAlert("warning", "Er is geen adres gevonden bij de opgegeven postcode en huisnummer");
     })
   }
 
@@ -151,7 +150,14 @@ export class DeliveryComponent implements OnInit, OnDestroy {
     })
   }
 
+  resetForm() {
+    this.form.reset();
+    this.disableForm();
+  }
+
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if(this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

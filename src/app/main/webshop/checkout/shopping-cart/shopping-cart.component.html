@@ -23,13 +23,13 @@
             </div>
         </div>
         <div class="actions">
-            <button type="submit" id="submit" (click)="changePage('delivery')">Door naar bestellen >></button>
+            <button type="submit" id="submit" (click)="changePage('delivery')">Aflevergegevens >></button>
         </div>
     </div>
 
     <div *ngIf="itemAmount <= 0" class="empty">
         <h1>Je winkelwagen is leeg!</h1>
-        <!-- Leeg winkelwagen plaatje of iets dergelijks -->
+        <i class="material-icons">add_shopping_cart</i>
         <h2>Ga naar de webshop om iets toe te voegen</h2>
         <button type="button" id="webshop" (click)="navigate()">Webshop</button>
     </div>

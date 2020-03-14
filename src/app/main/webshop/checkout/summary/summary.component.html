@@ -48,6 +48,6 @@
     </div>
     <div class="actions">
         <button type="button" id="back" (click)="changePage('delivery')">&lt;&lt; Terug</button>
-        <button type="submit" id="submit" (click)="validateAndPayOrder()">Door naar betalen >></button>
+        <button type="submit" id="submit" (click)="validateAndPayOrder()" [disabled]="isLoading">Door naar betalen >></button>
     </div>
 </div>

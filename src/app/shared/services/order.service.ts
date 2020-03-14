@@ -1,3 +1,6 @@
+import { DatabaseOrder } from './../models/databaseOrder.model';
+import { Status } from './../models/status.model';
+import { ValidatedOrder } from './../models/validatedOrder.model';
 import { ApiService } from './api.service';
 import { AlertService } from './alert.service';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -6,21 +9,22 @@ import { Product } from 'src/app/shared/models/product.model';
 import { Order } from './../models/order.model';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
-
   private classURL: string = "/order";
   private product: Product
   private item: Item;
   private items: Item[] = [];
   private order: BehaviorSubject<Order>;
   private valueFound: boolean;
+  private params = new HttpParams()
 
   constructor(
-    private productService: ProductService,
     private alert: AlertService,
     private api: ApiService) {
   }
@@ -46,17 +50,13 @@ export class OrderService {
     localStorage.setItem("order", JSON.stringify(this.order.value));
   }
 
-  public addProductToOrder(product: Product) {
+  public async addProductToOrder(product: Product) {
     this.product = product;
-    if (this.checkIfProductInStock()) {
-      this.addProduct();
-      this.clearVariables();
-      this.order.value.items = this.items;
-      this.setOrder(this.order.value);
-      this.alert.showAlert("success", "Het product is toegevoegd aan je winkelmandje");
-      return;
-    };
-    this.alert.showAlert("failed", "Het product is niet toegevoegd aan je winkelmandje");
+    this.addProduct();
+    this.clearVariables();
+    this.order.value.items = this.items;
+    this.setOrder(this.order.value);
+    this.alert.showAlert("success", "Het product is toegevoegd aan je winkelmandje");
   }
 
   public removeItemFromOrder(item: Item) {
@@ -65,15 +65,6 @@ export class OrderService {
     this.order.value.items = this.items;
     this.setOrder(this.order.value);
     this.alert.showAlert("success", "Het product is verwijderd uit je winkelmandje");
-  }
-
-  private checkIfProductInStock() {
-    if (this.productService.getProductByID(this.product.id).subscribe((product: Product) => {
-      product.stock > 0
-    })) {
-      return true;
-    }
-    return false;
   }
 
   private addProduct() {
@@ -113,13 +104,32 @@ export class OrderService {
   }
 
   public validateOrderAndInitiatePayment(order: Order) {
-    return this.api.post<Order>(this.classURL + "/pay", order).subscribe(
-      () => {
-        console.log("order received"); 
+    return this.api.post<Order>(this.classURL + "/pay", order).pipe(map(
+      (validatedOrder: ValidatedOrder) => {
+        return validatedOrder;
       },
-      (error) => {
-        console.log(error);
+      (error: string) => {
+        this.alert.showAlert("failed", error);
       }
-    );
+    ));
+  }
+
+  public getOrderStatus(orderID: string) {
+    return this.api.get(this.classURL + "/status/" + orderID, this.params).pipe(map(
+      (status: Status) => {
+        return status.status;
+      },
+      (error: string) => {
+        this.alert.showAlert("failed", error);
+      }
+    ))
+  }
+
+  public getAllOrdersByUserID() {
+    return this.api.get(this.classURL + "/all", this.params).pipe(map(
+      (orders: DatabaseOrder[]) => {
+        return orders;
+      }
+    ))
   }
 }

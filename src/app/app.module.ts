@@ -1,6 +1,6 @@
+import { AdminGuard } from './shared/guards/admin.guard';
 import { AuthTokenHttpInterceptor } from './shared/interceptors/http-auth-token.interceptor';
 import { environment } from '../environments/environment';
-
 import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { HttpErrorInterceptor } from './shared/interceptors/http-error.interceptor';
@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ToastrModule } from 'ngx-toastr';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireAnalyticsModule, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,7 +33,6 @@ import { ProductDetailsComponent } from './main/webshop/product-page/product-det
 import { ProductImageComponent } from './main/webshop/product-page/product-image/product-image.component';
 import { ProductPriceComponent } from './main/webshop/product-page/product-price/product-price.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BackToTopComponent } from './shared/back-to-top/back-to-top.component';
 import { RatingsComponent } from './main/home/ratings/ratings.component';
 import { CarouselDirective } from './shared/directives/carousel.directive';
 import { CheckoutComponent } from './main/webshop/checkout/checkout.component';
@@ -44,9 +44,18 @@ import { ItemComponent } from './main/webshop/checkout/shopping-cart/item/item.c
 import { ItemSummaryComponent } from './main/webshop/checkout/summary/item-summary/item-summary.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AccountComponent } from './main/account/account.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { NavigationComponent } from './main/account/navigation/navigation.component';
+import { SettingsComponent } from './main/account/settings/settings.component';
+import { LoginComponent } from './main/account/login/login.component';
+import { AdminUsersComponent } from './main/account/admin/admin-users/admin-users.component';
+import { AdminProductsComponent } from './main/account/admin/admin-products/admin-products.component';
+import { AdminOrdersComponent } from './main/account/admin/admin-orders/admin-orders.component';
+import { OrdersComponent } from './main/account/settings/orders/orders.component';
 
 const firebaseUiAuthConfig = {
   signInFlow: 'popup',
+  signInSuccessUrl: 'http://localhost:4200/account',
   signInOptions: [
     {
       provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -76,7 +85,6 @@ const firebaseUiAuthConfig = {
     ProductDetailsComponent,
     ProductImageComponent,
     ProductPriceComponent,
-    BackToTopComponent,
     RatingsComponent,
     CarouselDirective,
     CheckoutComponent,
@@ -88,10 +96,18 @@ const firebaseUiAuthConfig = {
     ItemSummaryComponent,
     LoadingSpinnerComponent,
     AccountComponent,
+    NavigationComponent,
+    SettingsComponent,
+    OrdersComponent,
+    LoginComponent,
+    AdminUsersComponent,
+    AdminProductsComponent,
+    AdminOrdersComponent,
   ],
   imports: [
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAnalyticsModule,
     AngularFireAuthModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -101,6 +117,7 @@ const firebaseUiAuthConfig = {
     HttpClientModule,
     MatIconModule,
     MatExpansionModule,
+    MatSidenavModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-full-width',
       preventDuplicates: true,
@@ -110,6 +127,10 @@ const firebaseUiAuthConfig = {
     })
   ],
   providers: [
+    ScreenTrackingService,
+    UserTrackingService,
+    AuthGuard,
+    AdminGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthTokenHttpInterceptor,
@@ -123,9 +144,6 @@ const firebaseUiAuthConfig = {
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: HammerJSConfig
-    },
-    {
-      provide: AuthGuard
     }
   ],
   bootstrap: [AppComponent],

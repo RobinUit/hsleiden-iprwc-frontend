@@ -1,0 +1,93 @@
+.paymentContainer {
+  background-color: white;
+  height: auto;
+  min-height: 500px;
+  margin: 80px auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 40px 80px;
+  position: relative;
+
+  .actions {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+
+    #paymentSuccess,
+    #paymentFail {
+      display: none;
+      margin: 0;
+      padding: 0;
+      color: rgb(58, 101, 128);
+
+      h1 {
+        font-family: "KeepCalm";
+        font-size: 40px;
+        margin-bottom: 30px;
+      }
+
+      i {
+        font-size: 150px;
+      }
+
+      h2 {
+        font-size: 20px;
+        margin-top: 30px;
+
+        a {
+          font-family: "GraphikBold";
+          color: rgb(58, 101, 128);
+          text-decoration: none;
+        }
+      }
+    }
+
+    #paymentSuccess {
+      i {
+        color: #51a351;
+      }
+    }
+
+    #paymentFail {
+      i {
+        color: #bd362f;
+      }
+    }
+
+    h3 {
+      margin: 0;
+      padding: 0;
+      font-size: 18px;
+      margin: 50px 0 20px 0;
+    }
+
+    button {
+      line-height: 35px;
+      cursor: pointer;
+      border: none;
+      background-color: rgb(92, 162, 82);
+      text-transform: uppercase;
+      color: white;
+      font-family: "KeepCalm";
+      font-size: 10px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      height: 35px;
+      padding: 0 30px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .checkoutContainer {
+    padding: 20px 20px 40px 20px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .checkoutContainer {
+    padding: 20px;
+  }
+}

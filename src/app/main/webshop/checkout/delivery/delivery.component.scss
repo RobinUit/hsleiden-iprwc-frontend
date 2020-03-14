@@ -1,9 +1,9 @@
 .delivery {
   .heading {
-    font-family: "KeepCalm";
     text-align: left;
 
     h1 {
+      font-family: "KeepCalm";
       font-size: 20px;
       color: rgb(58, 101, 128);
     }
@@ -19,6 +19,23 @@
   .deliveryForm {
     color: rgb(58, 101, 128);
     text-align: left;
+    position: relative;
+
+    #resetButton {
+      margin: 0;
+      padding: 0;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: transparent;
+      border: 0;
+
+      i {
+        color: rgb(58, 101, 128);
+        font-size: 30px;
+      }
+    }
 
     label {
       display: inline-block;
@@ -144,9 +161,26 @@
   color: rgba(58, 101, 128, 0.6);
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: rgb(58, 101, 128);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 @media only screen and (max-width: 900px) {
   .delivery {
     .deliveryForm {
+      #resetButton {
+        position: absolute;
+        top: -25px;
+      }
       #formGroup {
         margin: 35px 0;
       }

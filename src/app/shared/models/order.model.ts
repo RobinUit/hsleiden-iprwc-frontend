@@ -15,6 +15,7 @@ export class Order {
         public city?: string, 
         public country?: string,
         public items?: Item[], 
-        public message?: string
+        public message?: string,
+        public userID?: string
         ) {}
 }

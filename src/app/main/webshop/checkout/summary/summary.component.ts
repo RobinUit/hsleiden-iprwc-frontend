@@ -1,7 +1,6 @@
-import { Product } from 'src/app/shared/models/product.model';
-import { ProductService } from 'src/app/shared/services/product.service';
+import { ValidatedOrder } from './../../../../shared/models/validatedOrder.model';
+import { AuthService } from './../../../../shared/services/auth.service';
 import { OrderService } from './../../../../shared/services/order.service';
-import { ApiService } from './../../../../shared/services/api.service';
 import { CheckoutComponent } from './../checkout.component';
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { Order } from 'src/app/shared/models/order.model';
@@ -20,8 +19,9 @@ export class SummaryComponent implements OnInit, OnChanges {
 
   totalItems: number = 0;
   subTotal: number;
+  isLoading: boolean = false;
 
-  constructor(private parent: CheckoutComponent, private orderService: OrderService, private p: ProductService) { }
+  constructor(private parent: CheckoutComponent, private orderService: OrderService, private auth: AuthService) { }
 
   ngOnInit() {
     this.getTotalAmountOfItems();
@@ -45,6 +45,28 @@ export class SummaryComponent implements OnInit, OnChanges {
   }
 
   validateAndPayOrder() {
-    this.orderService.validateOrderAndInitiatePayment(this.order);
+    this.isLoading = true;
+    this.order.userID = this.auth.databaseUserData.id;
+    
+    this.orderService.validateOrderAndInitiatePayment(this.order).subscribe(
+      (validatedOrder: ValidatedOrder) => {      
+        sessionStorage.setItem("orderID", validatedOrder.orderID.toString());
+        this.resetOrder();
+        window.open(validatedOrder.checkoutURL, "_self")
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
+  }
+
+  private resetOrder() {
+    this.order.items = [];
+    this.order.message = null;
+    this.order.shippingCosts = null;
+    this.order.totalAmount = null;
+    this.order.userID = null;
+
+    this.orderService.setOrder(this.order);
   }
 }

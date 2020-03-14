@@ -1,9 +1,8 @@
-import { ProductService } from 'src/app/shared/services/product.service';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
 import { OrderService } from './shared/services/order.service';
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { environment } from '../environments/environment';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +14,7 @@ export class AppComponent {
 
   location: Location;
 
-  constructor(private orderService: OrderService, private productService: ProductService) { }
+  constructor(private orderService: OrderService) { }
 
   ngOnInit() {
     this.automaticRouteToHTTPS()

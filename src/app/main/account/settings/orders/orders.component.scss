@@ -1,0 +1,55 @@
+.orders {
+    width: 100%;
+
+    .heading {
+        h1 {
+            font-family: "KeepCalm";
+            font-size: 20px;
+        }
+    }
+
+    table, td, th {  
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+      
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      th, td {
+        padding: 15px;
+      }
+
+    .ordersTable {
+        width: 100%;
+        .order, .tableheading {
+
+
+            .row1, .row2, .row3, .row4 {
+
+            }
+    
+            .row1 {
+                width: 10%;
+            }
+    
+            .row2 {
+                width: 30%
+            }
+    
+            .row3 {
+                width: 30%;
+            }
+    
+            .row4 {
+                width: 30%;
+            }
+        }
+
+        .order {
+
+        }
+    }
+}

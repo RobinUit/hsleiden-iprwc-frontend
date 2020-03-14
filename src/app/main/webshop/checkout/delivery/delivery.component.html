@@ -4,6 +4,7 @@
         <div class="line"></div>
     </div>
     <div class="deliveryForm">
+        <button type="reset" (click)="resetForm()" id="resetButton" title="Reset aflevergegevens"><i class="material-icons">restore_page</i></button>
         <form autocomplete="off" [formGroup]="form" (ngSubmit)="processForm()">
             <div formGroupName="contactdetails">
                 <div class="row1">
@@ -36,19 +37,20 @@
                     <div class="zipcode" id="formGroup">
                         <label for="zipcode">Postcode:</label>
                         <input type="text" name="zipcode" placeholder="Postcode" autocomplete="postal-code"
-                            (focusout)="getFullAddress()" oninput="this.value = this.value.toUpperCase()" formControlName="zipcode" required>
+                            (focusout)="getFullAddress()" oninput="this.value = this.value.toUpperCase()"
+                            formControlName="zipcode" required>
                     </div>
                     <div class="housenumber" id="formGroup">
                         <label for="housenumber">Huisnummer:</label>
                         <input type="text" name="housenumber" placeholder="Nr." (focusout)="getFullAddress()"
-                            formControlName="housenumber" required>
+                            formControlName="housenumber" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="row4">
                     <div class="street" id="formGroup">
                         <label for="street">Straatnaam:</label>
-                        <input type="text" name="street" placeholder="" autocomplete="addre"
-                            formControlName="street" required>
+                        <input type="text" name="street" placeholder="" autocomplete="addre" formControlName="street"
+                            required>
                     </div>
                     <div class="city" id="formGroup">
                         <label for="city">Woonplaats:</label>
@@ -69,7 +71,7 @@
             </div>
             <div class="actions">
                 <button type="button" id="back" (click)="back()">&lt;&lt; Terug</button>
-                <button type="submit" id="submit" [disabled]="!form.valid">Door naar betalen >></button>
+                <button type="submit" id="submit" [disabled]="!form.valid">Overzicht >></button>
             </div>
         </form>
     </div>

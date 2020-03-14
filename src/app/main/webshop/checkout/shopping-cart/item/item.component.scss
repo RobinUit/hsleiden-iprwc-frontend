@@ -76,23 +76,26 @@
         text-align: center;
       }
 
-      .amountField, .priceField {
+      .amountField,
+      .priceField {
         margin: 5px 10%;
         display: flex;
         align-items: center;
 
         label,
-        input, p {
-          margin: 0 5px;
+        input,
+        p {
           width: 50%;
         }
-        
+
         label {
-            text-align: right;
+          margin-right: 10px;
+          text-align: right;
         }
 
-        input, p {
-            text-align: left;
+        input,
+        p {
+          text-align: left;
         }
 
         input {
@@ -112,8 +115,8 @@
       }
 
       p {
-          font-family: "Graphik";
-          font-size: 14px;
+        font-family: "Graphik";
+        font-size: 14px;
       }
     }
 

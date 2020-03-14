@@ -8,10 +8,10 @@
   }
 
   .heading {
-    font-family: "KeepCalm";
     text-align: left;
-
+    
     h1 {
+      font-family: "KeepCalm";
       font-size: 20px;
       color: rgb(58, 101, 128);
     }
@@ -87,6 +87,13 @@
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       height: 35px;
       padding: 0 30px;
+    }
+
+    button[disabled] {
+      cursor: not-allowed;
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #867f7f;
     }
   }
 }

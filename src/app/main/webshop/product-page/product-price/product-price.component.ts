@@ -1,3 +1,5 @@
+import { Item } from 'src/app/shared/models/item.model';
+import { Order } from 'src/app/shared/models/order.model';
 import { OrderService } from './../../../../shared/services/order.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/shared/models/product.model';
@@ -35,7 +37,7 @@ export class ProductPriceComponent implements OnInit {
     } else if (this.product.stock > 1 && this.product.stock <= 10) {
       this.stockText = "Nog slechts " + this.product.stock + " items beschikbaar"
       return;
-    } else if (this.product.stock == 1) {
+    } else if (this.product.stock == 1 && !this.product.digital) {
       this.stockText = "Nog slechts " + this.product.stock + " item beschikbaar"
       return;
     }

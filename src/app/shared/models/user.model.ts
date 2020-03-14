@@ -1,17 +1,17 @@
 export class DatabaseUser {
 
   constructor(
-    public id: string, 
-    public email: string, 
-    public firstname?: string, 
-    public lastname?: string, 
-    private isAdmin?: number) { }
+    public id: string,
+    public email: string,
+    public firstname?: string,
+    public lastname?: string,
+    public isAdmin?: number) { }
 
-    getIsAdmin(): boolean {
-      if(this.isAdmin === 1) {
-        return true;
-      } else {
-        return false;
-      }
+
+  getIsAdmin() {
+    if (this.isAdmin == 1) {
+      return true;
     }
+    return false;
+  }
 }

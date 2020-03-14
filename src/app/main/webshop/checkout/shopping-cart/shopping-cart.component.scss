@@ -6,10 +6,10 @@
   }
 
   .heading {
-    font-family: "KeepCalm";
     text-align: left;
 
     h1 {
+      font-family: "KeepCalm";
       font-size: 20px;
       color: rgb(58, 101, 128);
     }
@@ -93,10 +93,20 @@
   }
 
   .empty {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
     color: rgb(58, 101, 128);
     h1 {
       font-family: "GraphikBold";
       font-size: 28px;
+    }
+
+    i {
+      font-size: 150px;
+      color: rgb(58, 101, 128);
     }
 
     h2 {

@@ -8,6 +8,6 @@ export const environment = {
     storageBucket: "back-to-the-roots-cde11.appspot.com",
     messagingSenderId: "800982917588",
     appId: "1:800982917588:web:5a9dcc317a29ab5ccdf641",
-    measurementId: "G-JE191KXTLB"
+    measurementId: "G-CJJV5KL07N",
   }
 };

@@ -1,0 +1,124 @@
+.navigationbar {
+  background-color: rgb(58, 101, 128);
+  min-width: 100px;
+  height: 100%;
+
+  nav {
+    padding: 0;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    z-index: 10;
+
+    li {
+      a {
+        width: 100%;
+        height: 100px;
+        position: relative;
+        display: block;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+
+        .material-icons {
+          position: absolute;
+          top: 25%;
+          left: 25%;
+          color: white;
+          font-size: 50px;
+        }
+
+        img {
+          position: absolute;
+          top: 25%;
+          left: 25%;
+          width: 50px;
+          height: 50px;
+        }
+
+        .right {
+          min-width: 150px;
+          max-width: 200px;
+          top: 70%;
+          left: 90%;
+          margin-left: 20px;
+          transform: translate(0, -80%);
+          padding: 5px 20px;
+          color: white;
+          background-color: #656565;
+          font-weight: normal;
+          font-size: 16px;
+          border-radius: 8px;
+          position: absolute;
+          z-index: 99999999;
+          box-sizing: border-box;
+          box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+          visibility: hidden;
+          opacity: 0;
+          transition: opacity 0.8s;
+
+          i {
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            margin-top: -12px;
+            width: 12px;
+            height: 24px;
+            overflow: hidden;
+          }
+
+          i::after {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            left: 0;
+            top: 50%;
+            transform: translate(50%, -50%) rotate(-45deg);
+            background-color: #656565;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+          }
+        }
+      }
+
+      .tooltip:hover {
+        .right {
+          visibility: visible;
+          overflow: visible;
+          opacity: 1;
+        }
+      }
+    }
+    li:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+#dropdown {
+  #dropdownIcon {
+    .material-icons {
+      transition: ease-in-out 0.5s;
+    }
+  }
+  ul {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+  }
+}
+
+#dropdown:hover {
+  #dropdownIcon {
+    cursor: default;
+    .material-icons {
+      transform: rotate(90deg);
+    }
+  }
+  ul {
+    max-height: 300px;
+  }
+}

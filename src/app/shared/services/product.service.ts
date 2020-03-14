@@ -24,7 +24,7 @@ export class ProductService {
 
   public getProductByID(id: number) {
     return this.api.get<Product>(this.classURL + "/" + id, this.params).pipe(map(
-      (product: Product) => {
+      (product: Product) => {        
         return product;
       }, () => {
         this.alert.showAlert("failed", "De webshop kan op dit moment niet geladen worden. Probeer het later opnieuw.")

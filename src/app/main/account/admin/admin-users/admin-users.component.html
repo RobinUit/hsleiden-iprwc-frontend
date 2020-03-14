@@ -1,0 +1,54 @@
+<table class="adminsTable" *ngIf="admins">
+    <tr class="tableheading">
+        <th class="row1">
+            Gebruiker ID
+        </th>
+        <th class="row2">
+            Naam
+        </th>
+        <th class="row3">
+            E-mail
+        </th>
+    </tr>
+    <tr class="user" *ngFor="let admin of admins">
+        <td class="row1">
+            {{admin.id}}
+        </td>
+        <td class="row2">
+            {{admin.firstname}} {{admin.lastname}}
+        </td>
+        <td class="row3">
+            {{admin.email}}
+        </td>
+        <td class="row4">
+            <button>Verwijder admin</button>
+        </td>
+    </tr>
+</table>
+<table class="usersTable" *ngIf="users">
+    <tr class="tableheading">
+        <th class="row1">
+            Gebruiker ID
+        </th>
+        <th class="row2">
+            Naam
+        </th>
+        <th class="row3">
+            E-mail
+        </th>
+    </tr>
+    <tr class="user" *ngFor="let user of users">
+        <td class="row1">
+            {{user.id}}
+        </td>
+        <td class="row2">
+            {{user.firstname}} {{user.lastname}}
+        </td>
+        <td class="row3">
+            {{user.email}}
+        </td>
+        <td class="row4">
+            <button>Maak admin</button>
+        </td>
+    </tr>
+</table>

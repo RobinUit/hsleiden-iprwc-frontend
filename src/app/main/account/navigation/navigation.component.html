@@ -1,0 +1,68 @@
+<div class="navigationbar">
+    <nav>
+        <ul>
+            <li>
+                <a routerLink="/account" class="tooltip">
+                    <i class="material-icons">
+                        person
+                    </i>
+                    <div class="right">
+                        <h3>Account</h3>
+                        <i></i>
+                    </div>
+                </a>
+            </li>
+            <li id="dropdown" *ngIf="auth.databaseUserData.isAdmin" (mouseenter)="openDropdown()" (mouseleave)="closeDropdown()">
+                <a id="dropdownIcon">
+                    <i class="material-icons">
+                        settings
+                    </i>
+                </a>
+                <ul id="dropdownList">
+                    <li>
+                        <a routerLink="/account/admin/bestellingen" class="tooltip">
+                            <i class="material-icons">
+                                assignment
+                            </i>
+                            <div class="right">
+                                <h3>Bestellingen</h3>
+                                <i></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/account/admin/gebruikers" class="tooltip">
+                            <i class="material-icons">
+                                person
+                            </i>
+                            <div class="right">
+                                <h3>Gebruikers</h3>
+                                <i></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/account/admin/producten" class="tooltip">
+                            <i class="material-icons">
+                                description
+                            </i>
+                            <div class="right">
+                                <h3>Producten</h3>
+                                <i></i>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a (click)="auth.signOut()" class="tooltip">
+                    <img src="assets/images/icons/LogUit.svg" alt="Loguit icoon">
+                    <div class="right">
+                        <h3>Log uit</h3>
+                        <i></i>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
