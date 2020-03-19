@@ -15,9 +15,7 @@ export class ProductImageComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    console.log(this.product.totalImages);
-    
+  ngOnInit() {    
     if (this.product.totalImages != 1) {
       document.getElementById('actions').style.display = 'flex';
     } 

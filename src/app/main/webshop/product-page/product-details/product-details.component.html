@@ -9,7 +9,7 @@
             </mat-expansion-panel-header>
 
             <p>
-                {{product.description}}
+                {{product.description | replace : '-n-' : '\n'}}
             </p>
 
         </mat-expansion-panel>
@@ -21,7 +21,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <p>
-                {{product.specifications}}
+                {{product.specifications | replace : '-n-' : '\n'}}
             </p>
         </mat-expansion-panel>
     </mat-accordion>

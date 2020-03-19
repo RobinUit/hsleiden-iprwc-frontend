@@ -23,13 +23,33 @@ export class UserService {
     }))
   }
 
-  public changeUsername(user: DatabaseUser) {
-    console.log(user);
-    
-    return this.api.post(this.classURL + "/name", user).subscribe(() => {
-      this.alert.showAlert("success", "Je naam is met succes veranderd");
-    }, () => {
-      this.alert.showAlert("failed", "Het is niet gelukt om je naam te veranderen");
-    })
+  public createAdmin(userID: string) {
+    return this.api.post(this.classURL + "/admin/" + userID, this.params).pipe(map(
+      () => {
+        this.alert.showAlert("success", "Admin toegevoegd");
+      },
+      () => {
+        this.alert.showAlert("failed", "Admin niet toegevoegd");
+      }
+    ))
   }
+
+  public deleteAdmin(userID: string) {
+    return this.api.delete(this.classURL + "/admin/" + userID, this.params).pipe(map(
+      () => {
+        this.alert.showAlert("success", "Admin verwijderd");
+      },
+      () => {
+        this.alert.showAlert("failed", "Admin niet verwijderd");
+      }
+    ))
+  }
+
+  // public changeUsername(user: DatabaseUser) {    
+  //   return this.api.post(this.classURL + "/name", user).subscribe(() => {
+  //     this.alert.showAlert("success", "Je naam is met succes veranderd");
+  //   }, () => {
+  //     this.alert.showAlert("failed", "Het is niet gelukt om je naam te veranderen");
+  //   })
+  // }
 }

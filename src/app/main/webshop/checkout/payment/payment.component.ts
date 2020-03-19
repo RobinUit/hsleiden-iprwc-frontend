@@ -30,7 +30,6 @@ export class PaymentComponent implements OnDestroy {
     if (orderID != null) {
       this.subscription = this.orderService.getOrderStatus(orderID).subscribe(
         (status: string) => {
-          console.log(status);
           if (status == "paid") {
             this.subscription1 = this.orderService.getOrder().subscribe(
               (order: Order) => {

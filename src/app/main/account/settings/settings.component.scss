@@ -1,8 +1,33 @@
 .settings {
-    margin: 50px 0;
-  #profileImage {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+  margin: 50px 10px;
+
+  .user {
+    max-width: 600px;
+    margin: auto;
+    #profileImage {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+
+    .line {
+      width: auto;
+      max-width: 600px;
+      margin: auto;
+      height: 1.5px;
+      background-color: rgb(58, 101, 128);
+    }
+
+    h1 {
+      font-size: 28px;
+      font-family: "KeepCalm";
+      color: rgb(58, 101, 128);
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .settings {
+    margin: 50px 0px;
   }
 }

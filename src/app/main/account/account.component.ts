@@ -20,7 +20,7 @@ export class AccountComponent {
 
   getAllUsers() {
     this.userService.getAllUsers().subscribe((databaseUsers: DatabaseUser[]) => {
-      console.log(databaseUsers);
+      // console.log(databaseUsers);
     })
   }
 }

@@ -1,7 +1,10 @@
 <div class="settings">
     <div *ngIf="auth.user | async as user">
-        <img *ngIf="user.photoURL" id="profileImage" [src]="user.photoURL">
-        <h1>Welkom {{user.displayName}}</h1>
+        <div class="user">
+            <img *ngIf="user.photoURL" id="profileImage" [src]="user.photoURL">
+            <h1>Welkom {{user.displayName}}</h1>
+            <div class="line"></div>
+        </div>
         <app-orders></app-orders>
     </div>
 </div>

@@ -28,8 +28,10 @@ export class ContactFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.auth.user.subscribe((user: User) => {
-      this.name = user.displayName;
-      this.email = user.email;
+      if (user) {
+        this.name = user.displayName;
+        this.email = user.email;
+      }
     })
   }
 

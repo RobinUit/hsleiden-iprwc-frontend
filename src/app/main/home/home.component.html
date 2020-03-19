@@ -13,11 +13,11 @@
                     te lezen. Doormiddel van QR-codes te scannen luister je gemakkeljk naar de bijbehorende muziek.
                 </p>
             </div>
-            <div class="actions" (click)="buyEbook()">
+            <div class="actions" (click)="buyEbook()" *ngIf="productsLoaded | async">
                 <div class="buy">
                     Koop nu het E-book!
                 </div>
-                <div class="price" *ngIf="productsLoaded | async">
+                <div class="price">
                     {{product.price | currency:'EUR':'symbol':'':'nl'}}
                 </div>
             </div>

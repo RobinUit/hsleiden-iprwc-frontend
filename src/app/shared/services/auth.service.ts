@@ -28,7 +28,6 @@ export class AuthService {
     private api: ApiService
   ) {
     this.user = this.afAuth.authState
-    this.afAuth.auth.useDeviceLanguage();
     this.afAuth.auth.onAuthStateChanged((user: User) => {
       if (user) {
         this.databaseUserData = new DatabaseUser(
@@ -38,46 +37,18 @@ export class AuthService {
           user.displayName.substr(user.displayName.indexOf(' ') + 1).trim()
         )
         this.emitUser(this.databaseUserData);
-        this.login(user);
+        this.login();
         return;
       }
     })
   }
 
-  private login(user: User) {
-    this.api.get<DatabaseUser>(this.classURL + "/" + user.uid, this.params).subscribe((databaseUser: DatabaseUser) => {
-      this.databaseUserData = new DatabaseUser(
-        databaseUser.id,
-        databaseUser.email,
-        databaseUser.firstname,
-        databaseUser.lastname,
-        databaseUser.isAdmin
-      ); 
-      this.emitUser(this.databaseUserData);
+  private login() {  
+    this.api.get<DatabaseUser>(this.classURL, this.params).subscribe((databaseUser: DatabaseUser) => {
+      this.databaseUserData = databaseUser;
+      this.emitUser(this.databaseUserData);      
     }, () => {
-      this.addUserToDatabase();
     })
-  }
-
-  private addUserToDatabase() {
-    this.api.post<DatabaseUser>(this.classURL, this.databaseUserData).subscribe(
-      () => { }, () => { }
-    )
-  }
-
-  public isAdmin(): boolean {
-    this.afAuth.auth.currentUser.getIdTokenResult()
-      .then((idTokenResult) => {
-        if (!!idTokenResult.claims.admin) {
-          return true;
-        } else {
-          return false;
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-    return false;
   }
 
   async signOut() {

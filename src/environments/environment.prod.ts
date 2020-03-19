@@ -9,5 +9,7 @@ export const environment = {
     messagingSenderId: "800982917588",
     appId: "1:800982917588:web:5a9dcc317a29ab5ccdf641",
     measurementId: "G-CJJV5KL07N",
-  }
+  },
+  apiKey: "https://api.backtotheroots2020.nl",
+  signinSuccesUrl: "https://www.backtotheroots2020.nl/account"
 };

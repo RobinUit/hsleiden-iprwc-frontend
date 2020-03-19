@@ -14,7 +14,7 @@ export class SettingsComponent implements OnInit {
   form: FormGroup;
   user: DatabaseUser;
 
-  constructor(private userService: UserService, public auth: AuthService) { }
+  constructor(public auth: AuthService) { }
 
   ngOnInit(): void {
     this.user = this.auth.databaseUserData;
@@ -32,12 +32,4 @@ export class SettingsComponent implements OnInit {
       lastname: new FormControl(),
     }, [Validators.required])
   }
-
-  updateUsername() {
-    this.user.firstname = this.form.get("firstname").value as string;
-    this.user.lastname = this.form.get("lastname").value as string;
-
-    this.userService.changeUsername(this.user);
-  }
-
 }

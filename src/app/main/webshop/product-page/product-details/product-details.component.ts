@@ -8,9 +8,6 @@ import { Product } from 'src/app/shared/models/product.model';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  productInformation: string = "Test"
-  productSpecifications: string = "Test2"
-
   @Input() product: Product;
 
   constructor() { }

@@ -7,7 +7,7 @@ import { HttpErrorInterceptor } from './shared/interceptors/http-error.intercept
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HammerJSConfig } from './shared/HammerJSConfig';
-import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { BrowserModule, HAMMER_GESTURE_CONFIG, HammerModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
@@ -52,10 +52,12 @@ import { AdminUsersComponent } from './main/account/admin/admin-users/admin-user
 import { AdminProductsComponent } from './main/account/admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './main/account/admin/admin-orders/admin-orders.component';
 import { OrdersComponent } from './main/account/settings/orders/orders.component';
+import { ReplacePipe } from './shared/pipes/replace.pipe';
+import { FilterPipe } from './shared/pipes/filter.pipe';
 
 const firebaseUiAuthConfig = {
   signInFlow: 'popup',
-  signInSuccessUrl: 'http://localhost:4200/account',
+  signInSuccessUrl: environment.signinSuccesUrl,
   signInOptions: [
     {
       provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -103,6 +105,8 @@ const firebaseUiAuthConfig = {
     AdminUsersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
+    ReplacePipe,
+    FilterPipe,
   ],
   imports: [
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
@@ -118,6 +122,7 @@ const firebaseUiAuthConfig = {
     MatIconModule,
     MatExpansionModule,
     MatSidenavModule,
+    HammerModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-full-width',
       preventDuplicates: true,

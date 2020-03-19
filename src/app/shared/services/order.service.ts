@@ -132,4 +132,12 @@ export class OrderService {
       }
     ))
   }
+
+  public getAllOrders() {
+    return this.api.get(this.classURL + "/admin/all", this.params).pipe(map(
+      (orders: DatabaseOrder[]) => {
+        return orders;
+      }
+    ))
+  }
 }

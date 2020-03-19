@@ -26,7 +26,7 @@
     }
 
     .contactform {
-      margin: 20px 100px;
+      margin: 0px 100px 30px 100px;
 
       #formGroup {
         margin: 30px 0px;
@@ -61,6 +61,8 @@
 
       input,
       textarea {
+        -webkit-appearance: none;
+        font-family: "Graphik";
         width: 100%;
         outline: none;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -105,11 +107,30 @@
   color: rgba(58, 101, 128, 0.6);
 }
 
+@media only screen and (max-width: 850px) {
+  .contactformcontainer {
+    .content {
+      .contactform {
+        margin: 0px 100px;
+      }
+    }
+  }
+  .submitButton {
+    padding-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .submitButton {
+    text-align: center;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .contactformcontainer {
     .content {
       .contactform {
-        margin: 20px 30px;
+        margin: 20px 30px 0px 30px;
 
         .name {
           max-width: 100%;
@@ -120,11 +141,5 @@
         }
       }
     }
-  }
-}
-
-@media only screen and (max-width: 750px) {
-  .submitButton {
-    text-align: center;
   }
 }

@@ -1,1 +1,31 @@
-<p>admin-products works!</p>
+<div class="products" *ngIf="products">
+    <div class="heading">
+        <h1>Producten</h1>
+    </div>
+    <div class="productsTable">
+        <table>
+            <tr class="tableHeading">
+                <th class="row1">
+                    Naam
+                </th>
+                <th class="row2">
+                    Voorraad
+                </th>
+                <th class="row3">
+                    Prijs
+                </th>
+            </tr>
+            <tr class="product" *ngFor="let product of products">
+                <td class="row1">
+                    {{product.name}}
+                </td>
+                <td class="row2">
+                    {{product.stock}}
+                </td>
+                <td class="row3">
+                    {{product.price}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
