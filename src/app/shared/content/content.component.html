@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="content-wrapper">
-        <router-outlet></router-outlet>
+<div class="container" >
+    <div class="content-wrapper" [@pageAnimation]="outlet.isActivated ? outlet.activatedRoute : ''">
+        <router-outlet #outlet="outlet"></router-outlet>
     </div>
 </div>

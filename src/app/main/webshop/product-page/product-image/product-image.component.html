@@ -1,1 +1,15 @@
-<p>product-image works!</p>
+<div class="imageContainer">
+    <div class="content">
+        <div class="imageBackground">
+            <img id="productImage" src="{{imageUrl}}">
+        </div>
+        <div id="actions">
+            <div class="previous" (click)="previousImage()">
+                <img src="assets/images/icons/Previous.png" alt="Previous rating">
+            </div>
+            <div class="next" (click)="nextImage()" id="next">
+                <img src="assets/images/icons/Next.png" alt="Next rating">
+            </div>
+        </div>
+    </div>
+</div>

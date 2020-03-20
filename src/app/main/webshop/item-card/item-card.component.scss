@@ -1,0 +1,139 @@
+.itemContainer {
+  width: 80%;
+  margin: 0 auto;
+  transition: all .3s;
+  .itemImage {
+    margin-bottom: -50px;
+    position: relative;
+
+    .bubble {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(92, 162, 82);
+      color: white;
+      border-radius: 50%;
+      position: absolute;
+      z-index: 2;
+      top: -40px;
+      left: calc(-40px + 20%);
+
+      p {
+        overflow: hidden;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    img {
+      width: 60%;
+      max-width: 350px;
+      height: 100%;
+      max-height: 500px;
+
+      -webkit-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.7);
+      -moz-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.7);
+      box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.7);
+      z-index: 1;
+    }
+  }
+}
+
+.itemCard {
+  z-index: 0;
+  height: auto;
+  padding-bottom: 30px;
+  width: 100%;
+  padding-top: 80px;
+  background-color: white;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  .center {
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  h1 {
+    white-space: initial;
+    word-wrap: break-word;
+    margin: 0 5px 15px 5px;
+    padding: 0;
+    font-size: 20px;
+    font-family: "GraphikBold";
+    color: rgb(58, 101, 128);
+  }
+
+  h2 {
+    font-family: "KeepCalm";
+    font-size: 20px;
+    margin: 0 auto;
+    color: rgb(173, 52, 51);
+    span {
+      font-size: 35px;
+      font-weight: 900;
+    }
+  }
+
+  p {
+    color: rgb(58, 101, 128);
+    font-size: 16px;
+  }
+
+  .itemButtonContainer {
+    margin-top: 20px;
+    width: 100%;
+    #addToCart,
+    #soldOut {
+      cursor: pointer;
+      border: none;
+      font-family: "KeepCalm";
+      margin: 0 auto;
+      width: 60%;
+      height: 40px;
+      background-color: rgb(92, 162, 82);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      text-transform: uppercase;
+      color: white;
+      transition: all .3s ease-in-out;
+    }
+
+    #soldOut {
+      cursor: not-allowed;
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #666666;
+    }
+
+    #addToCart:hover { 
+        transform: scale(1.03) translateY(-5%);
+    }
+  }
+
+}
+
+.itemContainer:hover {
+    opacity: 0.9;
+}
+
+@media only screen and (max-width: 750px) {
+  .itemContainer {
+    .itemImage {
+      .bubble {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    .itemCard {
+      .itemButtonContainer {
+        #addToCart, #soldOut {
+          width: 80%;
+        }
+      }
+    }
+  }
+}

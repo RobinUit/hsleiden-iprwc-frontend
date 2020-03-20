@@ -1,0 +1,56 @@
+.imageContainer {
+  width: 100%;
+  position: relative;
+  height: 100%;
+  margin: 0;
+
+  .content {
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+
+    .imageBackground {
+      -webkit-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.7);
+      -moz-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.7);
+      box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.7);
+      background-color: white;
+      width: 60%;  
+      margin: 0 auto;
+      position: relative;
+      #productImage {
+        width: 100%;
+        height: auto;
+        margin: auto;
+      }
+    }
+  
+    #actions {
+      display: none;
+      margin: 20px auto;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      height: 10%;
+  
+      .previous,
+      .next {
+        cursor: pointer;
+        margin: 0 50px;
+  
+        img {
+          width: 30px;
+          height: auto;
+          background-color: transparent;
+        }
+      }
+  
+      .previous {
+        left: 20px;
+      }
+  
+      .next {
+        right: 20px;
+      }
+    }
+  }
+}

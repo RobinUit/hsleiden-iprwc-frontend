@@ -13,3 +13,9 @@
         padding-top: 60px;
     }
 }
+
+router-outlet ~ * {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }

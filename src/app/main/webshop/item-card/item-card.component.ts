@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { OrderService } from './../../../shared/services/order.service';
+import { Router } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { Product } from 'src/app/shared/models/product.model';
 
 @Component({
   selector: 'app-item-card',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemCardComponent implements OnInit {
 
-  constructor() { }
+  public euro: string;
+  public cents: string;
 
-  ngOnInit() {
+  @Input() product: Product;
+
+  constructor(
+    private router: Router,
+    private orderService: OrderService) { }
+
+  ngOnInit() {    
+    const values = this.product.price.toFixed(2).toString().split(".");
+    this.euro = values[0];
+    this.cents = values[1];
   }
 
+  showProduct($event) {
+    if($event.target.matches('#addToCart')) {
+      return;
+    }
+    this.router.navigate(['/webshop/' + this.product.id])
+  }
+
+  addProductToShoppingCart() {
+    this.orderService.addProductToOrder(this.product);
+  }
 }

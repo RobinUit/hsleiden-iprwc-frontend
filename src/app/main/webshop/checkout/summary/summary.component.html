@@ -1,0 +1,53 @@
+<div class="summary">
+    <div class="heading">
+        <h1>Bestelling</h1>
+        <div class="line"></div>
+    </div>
+    <div class="information">
+        <div class="left">
+            <div class="address">
+                <h1>Adres:</h1>
+                <p>{{order.firstname}} {{order.lastname}}</p>
+                <p>{{order.street}} {{order.housenumber}}</p>
+                <p>{{order.zipcode}} {{order.city}}</p>
+                <p>{{order.country}}</p>
+                <hr>
+                <p>{{order.email}}</p>
+                <p>{{order.phonenumber}}</p>
+                <div class="message" *ngIf="order.message != null && order.message != ''">
+                    <br>
+                    <p>Opmerking:</p>
+                    <p>{{order.message}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="amount">
+                <h1>Betaling:</h1>
+                <p>Je hebt in totaal {{totalItems}}
+                    <span *ngIf="totalItems > 1">items</span>
+                    <span *ngIf="totalItems == 1">item</span>
+                    om af te rekenen
+                </p>
+                <p>Totaal: {{order.totalAmount | currency:'EUR':'symbol':'':'nl'}}</p>
+                <p>Verzendkosten: {{order.shippingCosts | currency:'EUR':'symbol':'':'nl'}}</p>
+                <p>Subtotaal: {{subTotal | currency:'EUR':'symbol':'':'nl'}} </p>
+            </div>
+        </div>
+    </div>
+    <div class="itemList">
+        <div class="heading">
+            <h1>Items:</h1>
+        </div>
+        <div id="items"
+            [ngStyle]="{'grid-template-columns': items.length === 1 ? 'repeat(1, 4fr)' : 'repeat(2, 2fr)' }">
+            <div *ngFor="let item of items" class="item">
+                <app-item-summary [item]="item"></app-item-summary>
+            </div>
+        </div>
+    </div>
+    <div class="actions">
+        <button type="button" id="back" (click)="changePage('delivery')">&lt;&lt; Terug</button>
+        <button type="submit" id="submit" (click)="validateAndPayOrder()" [disabled]="isLoading">Door naar betalen >></button>
+    </div>
+</div>

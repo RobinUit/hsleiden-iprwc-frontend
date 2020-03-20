@@ -92,19 +92,7 @@ header {
       width: 0;
     }
 
-    .activePage:after {
-      background: none repeat scroll 0 0 transparent;
-      bottom: 0;
-      content: "";
-      display: block;
-      height: 2px;
-      left: 0;
-      position: absolute;
-      background: rgb(58, 101, 128);
-      width: 100%;
-    }
-
-    a:hover:after {
+    a:hover:after, .activePage:after {
       width: 100%;
       left: 0;
     }
@@ -126,6 +114,30 @@ header {
 
     .account {
       margin-right: 10px;
+    }
+
+    .shoppingcart {
+      position: relative;
+      .bubble {
+        width: 18px;
+        height: 18px;
+        background-color: rgb(92, 162, 82);
+        color: white;
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        top: -12px;
+        right: -6px;
+  
+        p {
+          overflow: hidden;
+          margin: 0;
+          line-height: 20px;
+          text-align: center;
+          font-size: 8px;
+        }
+      }
+
     }
 
     img {
@@ -284,6 +296,33 @@ header {
       text-align: center;
       padding: 10px 0;
       font-size: 22px;
+
+      a {
+        color: rgb(58, 101, 128);
+        text-decoration: none;
+  
+        display: inline-block;
+        padding: 5px 20px;
+        position: relative;
+      }
+
+      a:after {
+        background: none repeat scroll 0 0 transparent;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        background: rgb(58, 101, 128);
+        transition: width 0.3s ease 0s, left 0.3s ease 0s;
+        width: 0;
+      }
+  
+      .activePage:after {
+        width: 100%;
+        left: 0;
+      }
     }
 
     /*

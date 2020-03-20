@@ -1,0 +1,106 @@
+<div class="allUsers">
+    <div class="actionsBar">
+        <div class="actions">
+            <div class="filterIcon">
+                <i class="material-icons">
+                    search
+                </i>
+            </div>
+            <div class="filter">
+                <input [(ngModel)]="searchText" placeholder="Zoek op ID of E-mail">
+            </div>
+            <div class="refresh">
+                <i class="material-icons" (click)="getAllUsers()">
+                    refresh
+                </i>
+            </div>
+        </div>
+    </div>
+    <div class="admins" *ngIf="admins && !isLoading">
+        <div class="heading">
+            <h1>Administrators</h1>
+        </div>
+        <div class="adminsTable">
+            <table>
+                <col width="35%" class="row1">
+                <col width="25%" class="row2">
+                <col width="35%" class="row3">
+                <col width="5%" class="row4">
+                <tr class="tableHeading">
+                    <th class="row1">
+                        ID
+                    </th>
+                    <th class="row2">
+                        Naam
+                    </th>
+                    <th class="row3">
+                        E-mail
+                    </th>
+                    <th class="row4">
+                    </th>
+                </tr>
+                <tr class="admin" *ngFor="let admin of admins | filter : searchText : filterRows">
+                    <td class="row1">
+                        {{admin.id}}
+                    </td>
+                    <td class="row2">
+                        {{admin.firstname}} {{admin.lastname}}
+                    </td>
+                    <td class="row3">
+                        {{admin.email}}
+                    </td>
+                    <td class="row4">
+                        <span class="material-icons" *ngIf="auth.databaseUserData.id != admin.id" (click)="deleteAdmin(admin.id)">
+                            person_add_disabled
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="users" *ngIf="users && !isLoading">
+        <div class="heading">
+            <h1>Gebruikers</h1>
+        </div>
+        <div class="usersTable">
+            <table>
+                <col width="35%" class="row1">
+                <col width="25%" class="row2">
+                <col width="35%" class="row3">
+                <col width="5%" class="row4">
+                <tr class="tableHeading">
+                    <th class="row1">
+                        ID
+                    </th>
+                    <th class="row2">
+                        Naam
+                    </th>
+                    <th class="row3">
+                        E-mail
+                    </th>
+                    <th class="row4">
+                    </th>
+                </tr>
+                <tr class="user" *ngFor="let user of users | filter : searchText : filterRows">
+                    <td class="row1">
+                        {{user.id}}
+                    </td>
+                    <td class="row2">
+                        {{user.firstname}} {{user.lastname}}
+                    </td>
+                    <td class="row3">
+                        {{user.email}}
+                    </td>
+                    <td class="row4">
+                        <span class="material-icons" (click)="createAdmin(user.id)">
+                            person_add
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div *ngIf="isLoading">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+</div>

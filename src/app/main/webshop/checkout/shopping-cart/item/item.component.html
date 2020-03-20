@@ -1,0 +1,39 @@
+<div class="item">
+    <div class="left">
+        <div class="image">
+            <img src="assets/images/products/{{item.product.id}}/1.png" alt="Foto {{item.product.name}}">
+        </div>
+    </div>
+    <div class="right">
+
+        <div class="information">
+            <div class="content">
+                <h1>{{item.product.name}}</h1>
+                <h2>{{item.product.deliveryTime}}</h2>
+            </div>
+        </div>
+
+        <div class="amount">
+            <div class="content">
+                <div class="priceField">
+                    <label for="amount">Prijs:</label>
+                    <p>{{item.product.price | currency:'EUR':'symbol':'':'nl'}}</p>
+                </div>
+                <div class="amountField">
+                    <label for="amount">Aantal:</label>
+                    <input type="number" min="1" name="amount" (change)="updateAmount()" value="item.amount" [(ngModel)]="amount"
+                        onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
+                </div>
+                <h1>{{totalPrice | currency:'EUR':'symbol':'':'nl'}}</h1>
+            </div>
+        </div>
+
+        <div class="delete">
+            <div class="content">
+                <button (click)="removeFromShoppingCart()">
+                    <img src="assets/images/icons/Trash.png" alt="Verwijder icoon">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

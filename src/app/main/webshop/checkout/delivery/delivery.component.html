@@ -1,0 +1,78 @@
+<div class="delivery">
+    <div class="heading">
+        <h1>Aflevergegevens</h1>
+        <div class="line"></div>
+    </div>
+    <div class="deliveryForm">
+        <button type="reset" (click)="resetForm()" id="resetButton" title="Reset aflevergegevens"><i class="material-icons">restore_page</i></button>
+        <form autocomplete="off" [formGroup]="form" (ngSubmit)="processForm()">
+            <div formGroupName="contactdetails">
+                <div class="row1">
+                    <div class="firstname" id="formGroup">
+                        <label for="firstname">Voornaam:</label>
+                        <input type="text" name="firstname" placeholder="Voornaam" autocomplete="given-name"
+                            formControlName="firstname" required>
+                    </div>
+                    <div class="lastname" id="formGroup">
+                        <label for="lastname">Achternaam:</label>
+                        <input type="text" name="lastname" placeholder="Achternaam" autocomplete="family-name"
+                            formControlName="lastname" required>
+                    </div>
+                </div>
+                <div class="row2">
+                    <div class="email" id="formGroup">
+                        <label for="email">E-mail:</label>
+                        <input type="email" name="email" placeholder="E-mail" autocomplete="email"
+                            formControlName="email" required email>
+                    </div>
+                    <div class="phonenumber" id="formGroup">
+                        <label for="phonenumber">Telefoonnummer:</label>
+                        <input type="tel" name="phonenumber" placeholder="Tel." autocomplete="tel"
+                            formControlName="phonenumber" required>
+                    </div>
+                </div>
+            </div>
+            <div formGroupName="address">
+                <div class="row3">
+                    <div class="zipcode" id="formGroup">
+                        <label for="zipcode">Postcode:</label>
+                        <input type="text" name="zipcode" placeholder="Postcode" autocomplete="postal-code"
+                            (focusout)="getFullAddress()" oninput="this.value = this.value.toUpperCase()"
+                            formControlName="zipcode" required>
+                    </div>
+                    <div class="housenumber" id="formGroup">
+                        <label for="housenumber">Huisnummer:</label>
+                        <input type="text" name="housenumber" placeholder="Nr." (focusout)="getFullAddress()"
+                            formControlName="housenumber" autocomplete="off" required>
+                    </div>
+                </div>
+                <div class="row4">
+                    <div class="street" id="formGroup">
+                        <label for="street">Straatnaam:</label>
+                        <input type="text" name="street" placeholder="" autocomplete="addre" formControlName="street"
+                            required>
+                    </div>
+                    <div class="city" id="formGroup">
+                        <label for="city">Woonplaats:</label>
+                        <input type="text" name="city" placeholder="" autocomplete="address-level2"
+                            formControlName="city" required>
+                    </div>
+                    <div class="country" id="formGroup">
+                        <label for="country">Land:</label>
+                        <input type="text" name="country" placeholder="" autocomplete="country"
+                            formControlName="country" required>
+                    </div>
+                </div>
+            </div>
+            <div class="message" id="formGroup">
+                <label for="message">Bestelopmerking (optioneel):</label>
+                <textarea name="message" placeholder="Plaats hier een eventuele opmerking" autocomplete="off"
+                    formControlName="message"></textarea>
+            </div>
+            <div class="actions">
+                <button type="button" id="back" (click)="back()">&lt;&lt; Terug</button>
+                <button type="submit" id="submit" [disabled]="!form.valid">Overzicht >></button>
+            </div>
+        </form>
+    </div>
+</div>

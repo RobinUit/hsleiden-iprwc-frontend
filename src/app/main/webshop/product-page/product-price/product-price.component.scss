@@ -1,0 +1,172 @@
+* {
+  color: rgb(58, 101, 128);
+}
+
+.box {
+  background-color: white;
+  text-align: left;
+  padding: 40px 80px;
+  margin-bottom: 30px;
+
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  .header {
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+      padding: 0;
+      word-wrap: break-word;
+    }
+
+    h1 {
+      font-family: "KeepCalm";
+      font-size: 25px;
+    }
+
+    h2 {
+      font-family: "KeepCalm";
+      font-size: 15px;
+      color: rgb(173, 52, 51);
+      span {
+        color: rgb(173, 52, 51);
+        font-size: 30px;
+        font-weight: 900;
+      }
+    }
+
+    p {
+      font-size: 12px;
+    }
+
+    .inline {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .left {
+        float: left;
+        flex: 40%;
+        max-width: 40%;
+      }
+
+      .right {
+        margin-left: 5%;
+        float: right;
+        flex: 55%;
+        max-width: 55%;
+
+        button {
+          top: 50%;
+          padding: 5px 20px;
+          font-family: "KeepCalm";
+          font-size: 12px;
+          width: auto;
+          height: auto;
+          background-color: white;
+          border: 1px solid rgb(92, 162, 82);
+          color: rgb(92, 162, 82);
+        }
+      }
+    }
+  }
+
+  .benefits {
+    margin-top: 15px;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        position: relative;
+        margin: 10px 0px;
+
+        img {
+          display: inline-block;
+          width: 23px;
+          height: auto;
+          transform: translatey(-10%);
+        }
+
+        p {
+        }
+      }
+    }
+  }
+
+  .itemButtonContainer {
+    margin-top: 20px;
+    width: 100%;
+    #addToCart,
+    #soldOut {
+      cursor: pointer;
+      border: none;
+      font-family: "KeepCalm";
+      margin: 0 auto;
+      width: 60%;
+      height: 40px;
+      background-color: rgb(92, 162, 82);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      text-transform: uppercase;
+      color: white;
+      transition: all 0.3s ease-in-out;
+    }
+
+    #soldOut {
+      cursor: not-allowed;
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #666666;
+    }
+
+    #addToCart:hover {
+      transform: scale(1.03) translateY(-5%);
+    }
+  }
+}
+
+@media only screen and (max-width: 1020px) {
+  .box {
+    text-align: center;
+    padding: 40px 50px;
+    margin: 30px 0px;
+    .header {
+      .inline {
+        display: block;
+
+        .left,
+        .right {
+          float: none;
+          flex: unset;
+          max-width: 100%;
+          margin: 5px 0;
+        }
+
+        button {
+          top: 50%;
+          left: 50%;
+          height: auto;
+        }
+      }
+    }
+
+    .benefits {
+      text-align: left;
+    }
+
+    .itemButtonContainer {
+      #addToCart,
+      #soldOut {
+        margin: 0 auto;
+        width: 80%;
+        height: 40px;
+      }
+    }
+  }
+}

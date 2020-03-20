@@ -1,3 +1,5 @@
+import { AngularFireAnalytics } from '@angular/fire/analytics';
+import { OrderService } from './shared/services/order.service';
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { environment } from '../environments/environment';
@@ -12,7 +14,14 @@ export class AppComponent {
 
   location: Location;
 
+  constructor(private orderService: OrderService) { }
+
   ngOnInit() {
+    this.automaticRouteToHTTPS()
+    this.orderService.getOrderFromLocalStorage()
+  }
+
+  automaticRouteToHTTPS() {
     if (environment.production) {
       if (location.protocol === 'http:') {
         window.location.href = location.href.replace('http', 'https');

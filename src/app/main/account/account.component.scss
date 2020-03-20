@@ -1,0 +1,49 @@
+.account {
+  width: 100%;
+  margin: 80px 0;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 0;
+  display: flex;
+  width: 100%;
+  min-height: 350px;
+  position: relative;
+
+  app-navigation {
+    float: left;
+    margin: 0;
+    padding: 0;
+    // position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  .content {
+    margin: 0 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ::ng-deep app-settings,
+    ::ng-deep app-orders,
+    ::ng-deep app-admin-orders, 
+    ::ng-deep app-admin-products, 
+    ::ng-deep app-admin-users {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .loginscreen {
+    width: 90%;
+  }
+
+  .account {
+    .content {
+      margin: 0 10px;
+    }
+  }
+}

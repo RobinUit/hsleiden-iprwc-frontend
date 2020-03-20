@@ -33,11 +33,10 @@ html, body {
     height: 100%; 
 }
 
-* {
-    font-family: "Graphik";
-}
 
 body { 
     margin: 0; 
-    // font-family: "Graphik", "Helvetica Neue", sans-serif; 
+    font-family: "Graphik", "Helvetica Neue", "Arial", sans-serif; 
+    overflow-x: hidden;
+    overflow-y: scroll;
 }

@@ -1,0 +1,39 @@
+<div class="orders" *ngIf="orders">
+    <div class="heading">
+        <h1>Bestellingen</h1>
+    </div>
+    <div class="ordersTable" *ngIf="orders">
+        <table>
+            <tr class="tableHeading">
+                <th class="row1">
+                    ID
+                </th>
+                <th class="row2">
+                    Besteldatum
+                </th>
+                <th class="row3">
+                    Totaalbedrag
+                </th>
+                <th class="row4">
+                    Status
+                </th>
+            </tr>
+            <tr class="order" *ngFor="let order of orders">
+                <td class="row1">
+                    {{order.id}}
+                </td>
+                <td class="row2">
+                    {{order.orderDate | date:'dd-MM-yyyy'}}
+                </td>
+                <td class="row3">
+                    {{order.totalAmount + order.shippingCosts | currency:'EUR':'symbol':'':'nl'}}
+                </td>
+                <td class="row4">
+                    <span id="status" [ngStyle]="{'background-color': setStatus(order.status)}">
+                        {{status}}
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

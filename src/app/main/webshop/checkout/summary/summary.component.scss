@@ -1,0 +1,142 @@
+.summary {
+  font-family: "Graphik";
+  color: rgb(58, 101, 128);
+  .line {
+    width: auto;
+    height: 1.5px;
+    background-color: rgb(58, 101, 128);
+  }
+
+  .heading {
+    text-align: left;
+    
+    h1 {
+      font-family: "KeepCalm";
+      font-size: 20px;
+      color: rgb(58, 101, 128);
+    }
+  }
+
+  .information {
+    display: flex;
+    width: 100%;
+    text-align: left;
+    font-family: "Graphik";
+
+    .left,
+    .right {
+      width: 40%;
+
+      h1 {
+        font-family: "KeepCalm";
+        font-size: 20px;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+
+    .left {
+      margin-left: auto;
+      margin-right: 10px;
+    }
+
+    .right {
+      margin-left: 10px;
+      margin-right: auto;
+    }
+  }
+
+  .itemList {
+    .heading {
+      text-align: center;
+      h1 {
+        font-family: "KeepCalm";
+        font-size: 20px;
+      }
+    }
+
+    #items {
+      width: 100%;
+      display: grid;
+      grid-auto-rows: auto;
+      .item {
+        width: 80%;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 2%;
+      }
+    }
+  }
+
+  .actions {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      line-height: 35px;
+      cursor: pointer;
+      border: none;
+      background-color: rgb(92, 162, 82);
+      text-transform: uppercase;
+      color: white;
+      font-family: "KeepCalm";
+      font-size: 10px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      height: 35px;
+      padding: 0 30px;
+    }
+
+    button[disabled] {
+      cursor: not-allowed;
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #867f7f;
+    }
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .summary {
+    .information {
+      display: block;
+
+      .left, .right {
+        width: 60%;
+        margin: 10px auto;
+      }
+    }
+    .itemList {
+      #items {
+        grid-template-columns: repeat(1, 4fr) !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .summary {
+    .actions {
+      display: flex;
+      text-align: center;
+      flex-direction: column-reverse;
+      margin-bottom: 0;
+      #back,
+      #submit {
+        margin: 0 auto;
+        float: none;
+      }
+
+      #back {
+        order: -1;
+        margin-top: 20px;
+      }
+
+      #submit {
+        order: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.loginscreen {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    height: auto;
+    max-width: 400px;
+    background-color: white;
+    margin: 80px auto;
+    padding: 40px 0;
+  
+    .heading {
+      margin: 20px;
+      h1,
+      h2 {
+        margin: 0;
+        padding: 0;
+        font-family: "KeepCalm";
+        color: rgb(58, 101, 128);
+      }
+  
+      h1 {
+        font-size: 24px;
+      }
+  
+      h2 {
+        font-size: 20px;
+      }
+    }
+  
+    img {
+      width: 150px;
+      height: auto;
+    }
+  
+    p {
+      margin: 40px 40px 0 40px;
+      font-size: 14px;
+      a {
+        text-decoration: none;
+        font-weight: bolder;
+        color: rgb(58, 101, 128);
+      }
+    }
+  }

@@ -1,0 +1,17 @@
+<div class="paymentContainer">
+    <div class="actions">
+        <div id="paymentSuccess">
+            <h1>De betaling is geslaagd!</h1>
+            <i class="material-icons">check_circle_outline</i>
+            <h2>Er is een bevestiging gestuurd naar {{auth.databaseUserData.email}}</h2>
+        </div>
+        <div id="paymentFail">
+            <h1>De betaling is mislukt!</h1>
+            <i class="material-icons">cancel</i>
+            <h2>Probeer het opnieuw of neem contact op via <a
+                    href="mailto:info@backtotheroots2020.nl">info@backtotheroots2020.nl</a></h2>
+        </div>
+        <h3>Ga terug naar de homepage</h3>
+        <button type="button" id="home" (click)="navigateHome()">Home</button>
+    </div>
+</div>

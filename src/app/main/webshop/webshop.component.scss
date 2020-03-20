@@ -1,0 +1,58 @@
+.information {
+  margin: 80px 0;
+  color: rgb(58, 101, 128);
+
+  .heading {
+    width: 70%;
+    margin: 0 auto;
+
+    h1 {
+      font-family: "KeepCalm";
+      margin: 0;
+      font-size: 40px;
+    }
+
+    h2 {
+      font-size: 25px;
+      margin-top: 0;
+    }
+
+    .text {
+      font-size: 18px;
+
+      strong {
+        font-family: "GraphikBold";
+      }
+    }
+  }
+
+  .loading {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .products {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-auto-rows: auto;
+    .items {
+      width: 100%;
+      margin: 50px auto 0px auto;
+      padding: 2%;
+
+      cursor: pointer;
+    }
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .information {
+    .heading {
+        width: 100%;
+    }
+    .products {
+      grid-template-columns: repeat(1, 4fr);
+    }
+  }
+}

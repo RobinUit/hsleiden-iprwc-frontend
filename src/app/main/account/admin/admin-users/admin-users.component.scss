@@ -1,0 +1,156 @@
+.allUsers {
+  margin: 50px 10px;
+
+  .actionsBar {
+    width: 95%;
+    height: 44px;
+    margin: 15px auto;
+    background-color: rgb(58, 101, 128);
+    border-radius: 5px;
+
+    .actions {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      position: relative;
+
+      .filterIcon {
+        width: 10%;
+
+        i {
+          font-size: 30px;
+        }
+      }
+
+      .filter {
+        width: 80%;
+
+        input {
+          height: 44px;
+          width: 100%;
+          font-family: "Graphik";
+          font-size: 16px;
+          color: white;
+          background-color: transparent;
+          border: none;
+          outline: none;
+          padding: 0;
+        }
+      }
+
+      .refresh {
+        width: 10%;
+
+        i {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .users,
+  .admins {
+    width: 100%;
+    position: relative;
+    .heading {
+      h1 {
+        margin-top: 20px;
+        margin-bottom: 0;
+        color: rgb(58, 101, 128);
+        font-family: "KeepCalm";
+        font-size: 22px;
+      }
+    }
+
+    .usersTable,
+    .adminsTable {
+      overflow-x: scroll;
+      text-align: center;
+
+      table {
+        word-wrap: break-word;
+        z-index: 10;
+        table-layout: auto;
+        font-family: "Graphik";
+        border-collapse: collapse;
+        margin: 15px auto;
+        font-size: 0.9em;
+        width: 95%;
+        border-radius: 5px 5px 0 0;
+        table-layout: fixed;
+        overflow: hidden;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+        .tableHeading {
+          font-size: 16px;
+          font-family: "KeepCalm";
+          background-color: rgb(58, 101, 128);
+          color: #ffffff;
+        }
+
+        th,
+        td {
+          padding: 12px 15px;
+        }
+
+        td.row4 {
+          padding: 5px;
+
+          span {
+            cursor: pointer;
+          }
+        }
+
+        .user,
+        .admin {
+          border-bottom: 1px solid #dddddd;
+        }
+
+        .user:nth-of-type(even),
+        .admin:nth-of-type(even) {
+          background-color: #f3f3f3;
+        }
+
+        .product:last-of-type(),
+        .admin:last-of-type() {
+          border-bottom: 2px solid #323333;
+        }
+      }
+    }
+  }
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: white;
+}
+
+@media only screen and (max-width: 800px) {
+  .row2 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .row1 {
+    display: none;
+  }
+
+  input {
+    margin-left: 5px;
+  }
+}

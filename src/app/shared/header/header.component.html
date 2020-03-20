@@ -43,10 +43,14 @@
 
         <div class="actions">
             <div class="actionsdiv">
-                <a class="account" routerLink="/login">
+                <a class="account" routerLink="/account">
                     <img src="assets/images/icons/Inloggen.png" alt="Account icoon">
                 </a>
                 <a class="shoppingcart" routerLink="/winkelwagen">
+                    <div class="bubble" *ngIf="amount > 0">
+                        <p id="items" *ngIf="amount <= 99 && amount > 0">{{amount}}</p>
+                        <p id="items" *ngIf="amount > 99">:D</p>
+                    </div>
                     <img src="assets/images/icons/ShoppingCart.png" alt="Winkelwagen icoon">
                 </a>
             </div>
