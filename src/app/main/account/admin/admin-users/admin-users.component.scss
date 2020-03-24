@@ -4,7 +4,7 @@
   .actionsBar {
     width: 95%;
     height: 44px;
-    margin: 15px auto;
+    margin: 15px auto 35px auto;
     background-color: rgb(58, 101, 128);
     border-radius: 5px;
 
@@ -67,7 +67,6 @@
 
     .usersTable,
     .adminsTable {
-      overflow-x: scroll;
       text-align: center;
 
       table {

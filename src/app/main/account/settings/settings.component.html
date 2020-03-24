@@ -1,7 +1,7 @@
 <div class="settings">
     <div *ngIf="auth.user | async as user">
-        <div class="user">
-            <img *ngIf="user.photoURL" id="profileImage" [src]="user.photoURL">
+        <div class="user" *ngIf="getImage(user)">
+            <img id="profileImage" [src]="photoURL" onerror="this.src='assets/images/products/noImage.jpg'">
             <h1>Welkom {{user.displayName}}</h1>
             <div class="line"></div>
         </div>

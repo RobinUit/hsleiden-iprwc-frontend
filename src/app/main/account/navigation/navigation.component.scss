@@ -58,7 +58,7 @@
           box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
           visibility: hidden;
           opacity: 0;
-          transition: opacity 0.8s;
+          transition: opacity 0.5s;
 
           i {
             position: absolute;
@@ -120,5 +120,21 @@
   }
   ul {
     max-height: 300px;
+  }
+}
+
+@media (pointer: coarse) {
+  .navigationbar {
+    ul {
+      li {
+        .tooltip:hover {
+          .right {
+            visibility: hidden;
+            overflow: hidden;
+            opacity: 0;
+          }
+        }
+      }
+    }
   }
 }

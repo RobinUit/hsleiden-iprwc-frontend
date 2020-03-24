@@ -23,7 +23,7 @@
                     {{order.id}}
                 </td>
                 <td class="row2">
-                    {{order.orderDate | date:'dd-MM-yyyy'}}
+                    {{order.orderDate | date: 'dd-MM-yyyy HH:mm'}}
                 </td>
                 <td class="row3">
                     {{order.totalAmount + order.shippingCosts | currency:'EUR':'symbol':'':'nl'}}

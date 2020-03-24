@@ -25,7 +25,7 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
-    private api: ApiService
+    private api: ApiService,
   ) {
     this.user = this.afAuth.authState
     this.afAuth.auth.onAuthStateChanged((user: User) => {
@@ -33,20 +33,22 @@ export class AuthService {
         this.databaseUserData = new DatabaseUser(
           user.uid,
           user.email,
-          user.displayName.substr(0, user.displayName.indexOf(' ')).trim(),
-          user.displayName.substr(user.displayName.indexOf(' ') + 1).trim()
+          user.displayName
         )
         this.emitUser(this.databaseUserData);
-        this.login();
+        this.login(user);
         return;
       }
     })
   }
 
-  private login() {  
+  private login(user: User) {
+    this.params = new HttpParams().set("name", user.displayName);
     this.api.get<DatabaseUser>(this.classURL, this.params).subscribe((databaseUser: DatabaseUser) => {
       this.databaseUserData = databaseUser;
-      this.emitUser(this.databaseUserData);      
+      console.log(databaseUser);
+      
+      this.emitUser(this.databaseUserData);
     }, () => {
     })
   }

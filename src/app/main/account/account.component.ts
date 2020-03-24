@@ -12,15 +12,9 @@ export class AccountComponent {
 
   admin: boolean = false;
 
-  constructor(public auth: AuthService, private userService: UserService) {
+  constructor(public auth: AuthService) {
     this.auth.databaseUser.subscribe((databaseUserData: DatabaseUser) => {      
       this.admin = !!databaseUserData.isAdmin;
-    })
-  }
-
-  getAllUsers() {
-    this.userService.getAllUsers().subscribe((databaseUsers: DatabaseUser[]) => {
-      // console.log(databaseUsers);
     })
   }
 }

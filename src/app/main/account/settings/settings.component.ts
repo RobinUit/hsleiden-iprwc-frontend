@@ -1,8 +1,7 @@
-import { DatabaseUser } from './../../../shared/models/user.model';
+import { User } from 'firebase/app';
 import { AuthService } from './../../../shared/services/auth.service';
-import { UserService } from './../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-settings',
@@ -11,25 +10,29 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class SettingsComponent implements OnInit {
 
-  form: FormGroup;
-  user: DatabaseUser;
+  photoURL: string = "";
 
   constructor(public auth: AuthService) { }
 
   ngOnInit(): void {
-    this.user = this.auth.databaseUserData;
-
-    this.buildForm()
-    this.form.patchValue({
-      firstname: this.user.firstname,
-      lastname: this.user.lastname
-    })
   }
 
-  buildForm() {
-    this.form = new FormGroup({
-      firstname: new FormControl(),
-      lastname: new FormControl(),
-    }, [Validators.required])
+  getImage(user: User) {
+    this.photoURL = user.photoURL;
+
+    if (this.photoURL == null) {
+      const emailHash = new Md5().appendStr(user.email.toLowerCase().trim()).end();
+      const username = user.displayName.trim().replace(" ", "+");
+
+      const UIavatarsURL =
+        "https://eu.ui-avatars.com/api/" + username + "/150/3a6580/fff/2/0.4/true/false/true";
+
+      const gravatarURL =
+        "https://www.gravatar.com/avatar/" + emailHash + "?s=500&d=" + encodeURIComponent(UIavatarsURL);
+
+      this.photoURL = gravatarURL;
+    }
+
+    return true;
   }
 }
