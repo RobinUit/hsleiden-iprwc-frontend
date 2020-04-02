@@ -15,7 +15,7 @@ export class AdminOrdersComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
-  constructor(private orderService: OrderService) {
+  constructor(orderService: OrderService) {
     this.subscription = orderService.getAllOrders().subscribe(
       (orders: DatabaseOrder[]) => {
         this.orders = orders;
@@ -39,6 +39,10 @@ export class AdminOrdersComponent implements OnInit, OnDestroy {
         this.status = "mislukt";
         return "#BD362F";
     }
+  }
+
+  public openOrder(order: DatabaseOrder) {
+    console.log(order);
   }
 
   ngOnDestroy(): void {

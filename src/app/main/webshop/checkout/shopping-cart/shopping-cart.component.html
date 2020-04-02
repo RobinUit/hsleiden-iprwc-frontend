@@ -18,7 +18,8 @@
             </div>
             <div class="line"></div>
             <div class="totalPrice">
-                <p class="left">Totaal (inclusief verzendkosten {{ shippingCost | currency:'EUR':'symbol':'':'nl'}})</p>
+                <p class="left" *ngIf="shippingCost > 0">Totaal (inclusief verzendkosten {{ shippingCost | currency:'EUR':'symbol':'':'nl'}})</p>
+                <p class="left" *ngIf="shippingCost <= 0">Totaal</p>
                 <p class="right">{{price + shippingCost | currency:'EUR':'symbol':'':'nl'}}</p>
             </div>
         </div>

@@ -21,7 +21,7 @@
                         required></textarea>
                 </div>
                 <div class="submitButton">
-                    <button type="submit" [disabled]="!contactForm.valid">Versturen</button>
+                    <button type="submit" [disabled]="!contactForm.valid || isLoading">Versturen</button>
                 </div>
             </form>
         </div>

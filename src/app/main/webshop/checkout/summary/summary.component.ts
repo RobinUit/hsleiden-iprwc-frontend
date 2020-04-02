@@ -50,7 +50,7 @@ export class SummaryComponent implements OnInit, OnChanges {
     
     this.orderService.validateOrderAndInitiatePayment(this.order).subscribe(
       (validatedOrder: ValidatedOrder) => {      
-        sessionStorage.setItem("orderID", validatedOrder.orderID.toString());
+        localStorage.setItem("orderID", validatedOrder.orderID.toString());
         this.resetOrder();
         window.open(validatedOrder.checkoutURL, "_self")
       },

@@ -45,9 +45,7 @@ export class AuthService {
   private login(user: User) {
     this.params = new HttpParams().set("name", user.displayName);
     this.api.get<DatabaseUser>(this.classURL, this.params).subscribe((databaseUser: DatabaseUser) => {
-      this.databaseUserData = databaseUser;
-      console.log(databaseUser);
-      
+      this.databaseUserData = databaseUser;      
       this.emitUser(this.databaseUserData);
     }, () => {
     })

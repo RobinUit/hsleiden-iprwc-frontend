@@ -9,7 +9,7 @@ import { tap, map, take } from 'rxjs/operators';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router, private alert: AlertService) { }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
 
@@ -19,6 +19,7 @@ export class AuthGuard implements CanActivate {
       tap(loggedIn => {
         if (!loggedIn) {
           this.router.navigate(['/login']);
+          this.alert.showAlert("info", "Log eerst in om dit scherm te zien")
         }
       })
     )

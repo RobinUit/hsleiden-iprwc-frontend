@@ -115,12 +115,10 @@ export class OrderService {
   }
 
   public getOrderStatus(orderID: string) {
+    console.log("test");
     return this.api.get(this.classURL + "/status/" + orderID, this.params).pipe(map(
       (status: Status) => {
         return status.status;
-      },
-      (error: string) => {
-        this.alert.showAlert("failed", error);
       }
     ))
   }
@@ -129,6 +127,9 @@ export class OrderService {
     return this.api.get(this.classURL + "/all", this.params).pipe(map(
       (orders: DatabaseOrder[]) => {
         return orders;
+      },
+      (error: string) => {
+        this.alert.showAlert("failed", error);
       }
     ))
   }
@@ -137,6 +138,9 @@ export class OrderService {
     return this.api.get(this.classURL + "/admin/all", this.params).pipe(map(
       (orders: DatabaseOrder[]) => {
         return orders;
+      },
+      (error: string) => {
+        this.alert.showAlert("failed", error);
       }
     ))
   }

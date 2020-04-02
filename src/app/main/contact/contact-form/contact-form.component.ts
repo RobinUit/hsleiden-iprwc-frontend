@@ -18,6 +18,7 @@ export class ContactFormComponent implements OnInit, OnDestroy {
   name: string;
   email: string;
   message: string;
+  isLoading: boolean = false;
 
   succesMessage: string = "Je bericht is met succes verstuurd en je ontvangt zo spoedig mogelijk een reactie!";
   errorMessage: string = "Je bericht is niet juist verstuurd. Probeer het opnieuw of neem contact met ons op via het mailadres op deze pagina."
@@ -36,13 +37,16 @@ export class ContactFormComponent implements OnInit, OnDestroy {
   }
 
   public createMail() {
+    this.isLoading = true;
     let mail: ContactMail = this.contactForm.value;
     this.emailService.sendContactMail(mail).subscribe(
       () => {
         this.alert.showAlert("success", this.succesMessage);
-        this.contactForm.reset();
+        this.message = "";
+        this.isLoading = false;
       }, () => {
         this.alert.showAlert("failed", this.errorMessage);
+        this.isLoading = false;
       }
     );
   }
@@ -50,5 +54,4 @@ export class ContactFormComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

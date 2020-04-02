@@ -99,13 +99,23 @@
           padding: 5px;
 
           span {
-            cursor: pointer;
+            display: none;
           }
         }
 
         .user,
         .admin {
           border-bottom: 1px solid #dddddd;
+        }
+
+        .user:hover,
+        .admin:hover {
+          td.row4 {
+            span {
+              display: unset;
+              cursor: pointer;
+            }
+          }
         }
 
         .user:nth-of-type(even),

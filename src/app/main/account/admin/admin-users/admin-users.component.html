@@ -50,7 +50,8 @@
                         {{admin.email}}
                     </td>
                     <td class="row4">
-                        <span class="material-icons" *ngIf="auth.databaseUserData.id != admin.id" (click)="deleteAdmin(admin.id)">
+                        <span class="material-icons" *ngIf="auth.databaseUserData.id != admin.id"
+                            (click)="deleteAdmin(admin.id)" title="Verwijder admin">
                             person_add_disabled
                         </span>
                     </td>
@@ -92,7 +93,7 @@
                         {{user.email}}
                     </td>
                     <td class="row4">
-                        <span class="material-icons" (click)="createAdmin(user.id)">
+                        <span class="material-icons" (click)="createAdmin(user.id)" title="Maak admin">
                             person_add
                         </span>
                     </td>

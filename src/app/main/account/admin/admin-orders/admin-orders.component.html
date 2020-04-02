@@ -18,7 +18,7 @@
                     Status
                 </th>
             </tr>
-            <tr class="order" *ngFor="let order of orders">
+            <tr class="order" *ngFor="let order of orders" (click)="openOrder(order)">
                 <td class="row1">
                     {{order.id}}
                 </td>
