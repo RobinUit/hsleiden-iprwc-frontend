@@ -1,5 +1,5 @@
 # Back to the Roots Frontend
-_Frontend voor Studenten project Back to the Roots_
+_Frontend voor Studentenproject Back to the Roots_
 ___
 Project is gerealiseerd voor de module IPRWC (Programmeren in een webcontext), waarbij een webshop gemaakt moest worden met een [Angular Frontend](https://github.com/RobinUit/IPRWC-Frontend) en [Dropwizard Backend](https://github.com/RobinUit/IPRWC-Backend)
 
