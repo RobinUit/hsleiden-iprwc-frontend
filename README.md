@@ -1,27 +1,26 @@
-# Back to the Roots
+# Back to the Roots Frontend
+_Frontend voor Studenten project Back to the Roots_
+___
+Project is gerealiseerd voor de module IPRWC (Programmeren in een webcontext), waarbij een webshop gemaakt moest worden met een [Angular Frontend](https://github.com/RobinUit/IPRWC-Frontend) en [Dropwizard Backend](https://github.com/RobinUit/IPRWC-Backend)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
+Deze frontend bevat:
+- Een admin paneel waar alle gebruikers, bestellingen en producten te zien zijn
+- Search pipe voor het zoeken op e-mail en ID bij de gebruikers 
+- Volledig responsive design (mobile, tablet en PC)
+- Error, success, warning en info handling 
+- Contactformulier
+- Profielpagina waar bestellingen in te zien zijn
+- Account plaatjes voor elke gebruiker. Gebruikt eerst Google Profile, dan Gravatar en anders initialen
+- Google Analytics
+
+Met behulp van deze website zijn er uiteindelijk meer dan 300 boeken verkocht.
+
+© Robin Uitbeijerse
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
